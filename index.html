@@ -1,0 +1,2954 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>قاموس | المصطلحات التقنية</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            background: #0f0c1f;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 16px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* خلفية متحركة محسنة */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .animated-bg span {
+            position: absolute;
+            display: block;
+            width: 20px;
+            height: 20px;
+            background: rgba(139, 92, 246, 0.1);
+            border-radius: 50%;
+            animation: float 20s infinite;
+            bottom: -150px;
+        }
+
+        .animated-bg span:nth-child(1) {
+            left: 5%;
+            width: 100px;
+            height: 100px;
+            animation-delay: 0s;
+            background: rgba(79, 70, 229, 0.15);
+            filter: blur(8px);
+        }
+
+        .animated-bg span:nth-child(2) {
+            left: 15%;
+            width: 70px;
+            height: 70px;
+            animation-delay: 3s;
+            animation-duration: 25s;
+            background: rgba(139, 92, 246, 0.15);
+            filter: blur(5px);
+        }
+
+        .animated-bg span:nth-child(3) {
+            left: 25%;
+            width: 120px;
+            height: 120px;
+            animation-delay: 5s;
+            background: rgba(99, 102, 241, 0.15);
+            filter: blur(10px);
+        }
+
+        .animated-bg span:nth-child(4) {
+            left: 40%;
+            width: 60px;
+            height: 60px;
+            animation-delay: 2s;
+            animation-duration: 22s;
+            background: rgba(167, 139, 250, 0.15);
+            filter: blur(4px);
+        }
+
+        .animated-bg span:nth-child(5) {
+            left: 55%;
+            width: 90px;
+            height: 90px;
+            animation-delay: 4s;
+            background: rgba(124, 58, 237, 0.15);
+            filter: blur(7px);
+        }
+
+        .animated-bg span:nth-child(6) {
+            left: 70%;
+            width: 50px;
+            height: 50px;
+            animation-delay: 1s;
+            animation-duration: 18s;
+            background: rgba(139, 92, 246, 0.15);
+            filter: blur(3px);
+        }
+
+        .animated-bg span:nth-child(7) {
+            left: 85%;
+            width: 110px;
+            height: 110px;
+            animation-delay: 6s;
+            background: rgba(79, 70, 229, 0.15);
+            filter: blur(9px);
+        }
+
+        .animated-bg span:nth-child(8) {
+            left: 95%;
+            width: 80px;
+            height: 80px;
+            animation-delay: 7s;
+            background: rgba(139, 92, 246, 0.15);
+            filter: blur(6px);
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg) scale(1);
+                opacity: 0.8;
+                border-radius: 50%;
+            }
+            50% {
+                transform: translateY(-500px) rotate(360deg) scale(1.5);
+                opacity: 0.5;
+                border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+            }
+            100% {
+                transform: translateY(-1200px) rotate(720deg) scale(0.5);
+                opacity: 0;
+                border-radius: 30% 70% 40% 60% / 50% 40% 70% 30%;
+            }
+        }
+
+        .app-container {
+            max-width: 1400px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            border-radius: 56px 56px 40px 40px;
+            box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.5), 0 0 0 2px rgba(139, 92, 246, 0.3);
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.4s ease;
+        }
+
+        .app-container:hover {
+            box-shadow: 0 50px 100px -20px rgba(139, 92, 246, 0.6), 0 0 0 3px rgba(139, 92, 246, 0.5);
+            transform: translateY(-5px);
+        }
+
+        /* الهيدر العصري المحسن */
+        .hero-section {
+            background: linear-gradient(145deg, #1a1540 0%, #2d1f55 100%);
+            padding: 60px 50px 70px;
+            position: relative;
+            border-bottom: 1px solid rgba(139, 92, 246, 0.4);
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: -30%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.4) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: pulse 8s infinite;
+        }
+
+        .hero-section::after {
+            content: '';
+            position: absolute;
+            bottom: -40%;
+            left: -5%;
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.35) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: pulse 10s infinite reverse;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.1); }
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(139, 92, 246, 0.3);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(139, 92, 246, 0.6);
+            padding: 12px 24px;
+            border-radius: 60px;
+            color: #e9d5ff;
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(139, 92, 246, 0.3);
+            transform: translateY(0);
+            transition: all 0.3s;
+        }
+
+        .badge:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(139, 92, 246, 0.5);
+        }
+
+        .hero-title {
+            font-size: 5.2rem;
+            font-weight: 900;
+            line-height: 1;
+            margin-bottom: 20px;
+            background: linear-gradient(to left, #ffffff, #e9d5ff, #c4b5fd, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -2px;
+            text-shadow: 0 0 40px rgba(139, 92, 246, 0.5);
+            animation: glow 3s infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% { text-shadow: 0 0 30px rgba(139, 92, 246, 0.3); filter: brightness(1); }
+            50% { text-shadow: 0 0 70px rgba(139, 92, 246, 0.8); filter: brightness(1.1); }
+        }
+
+        .hero-subtitle {
+            color: #c4b5fd;
+            font-size: 1.4rem;
+            max-width: 700px;
+            margin-bottom: 45px;
+            line-height: 1.7;
+            text-shadow: 0 0 30px rgba(139, 92, 246, 0.5);
+            font-weight: 400;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 18px 28px;
+            border-radius: 30px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(139, 92, 246, 0.5);
+            transition: all 0.4s;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-10px) scale(1.05);
+            border-color: #8b5cf6;
+            box-shadow: 0 25px 40px -15px #8b5cf6;
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .stat-item:hover::before {
+            left: 100%;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #fff;
+            line-height: 1;
+            transition: all 0.3s;
+        }
+
+        .stat-item:hover .stat-number {
+            transform: scale(1.1);
+            color: #c4b5fd;
+        }
+
+        .stat-label {
+            color: #e2e8f0;
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        /* شريط البحث المتطور */
+        .search-section {
+            padding: 40px 50px 30px;
+            background: rgba(255, 255, 255, 0.98);
+            border-bottom: 1px solid #e9eef3;
+        }
+
+        .search-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .search-wrapper i {
+            position: absolute;
+            right: 25px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #8b5cf6;
+            font-size: 1.4rem;
+            pointer-events: none;
+            transition: all 0.3s;
+        }
+
+        .search-wrapper input {
+            width: 100%;
+            padding: 24px 70px 24px 30px;
+            background: linear-gradient(145deg, #f8fafc, #ffffff);
+            border: 3px solid #e2e8f0;
+            border-radius: 80px;
+            font-size: 1.2rem;
+            color: #1e293b;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+        }
+
+        .search-wrapper input:focus {
+            outline: none;
+            border-color: #8b5cf6;
+            background: #ffffff;
+            box-shadow: 0 20px 45px -15px #8b5cf6;
+            transform: scale(1.02);
+        }
+
+        .search-wrapper input:focus + i {
+            color: #8b5cf6;
+            transform: translateY(-50%) scale(1.2);
+        }
+
+        .search-wrapper input::placeholder {
+            color: #94a3b8;
+            font-weight: 400;
+            font-size: 1.1rem;
+        }
+
+        /* مسار التنقل المحسن */
+        .navigation-bar {
+            padding: 20px 50px;
+            background: rgba(255, 255, 255, 0.98);
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            border-bottom: 1px solid #f1f5f9;
+            flex-wrap: wrap;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .nav-btn {
+            background: linear-gradient(145deg, #f1f5f9, #ffffff);
+            border: none;
+            width: 55px;
+            height: 55px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            color: #475569;
+            font-size: 1.4rem;
+            border: 2px solid #e2e8f0;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(139, 92, 246, 0.2);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .nav-btn:hover:not(:disabled) {
+            background: #8b5cf6;
+            color: white;
+            transform: translateY(-8px) scale(1.1);
+            box-shadow: 0 20px 35px -10px #8b5cf6;
+            border-color: #8b5cf6;
+        }
+
+        .nav-btn:hover::before {
+            width: 200px;
+            height: 200px;
+        }
+
+        .nav-btn:active:not(:disabled) {
+            transform: translateY(-4px) scale(1.05);
+        }
+
+        .nav-btn:disabled {
+            opacity: 0.2;
+            cursor: not-allowed;
+        }
+
+        .path-indicator {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #64748b;
+            font-size: 1.1rem;
+            background: linear-gradient(145deg, #f8fafc, #ffffff);
+            padding: 10px 25px;
+            border-radius: 60px;
+            border: 2px solid #e9eef3;
+            flex: 1;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+            transition: all 0.3s;
+        }
+
+        .path-indicator:hover {
+            border-color: #8b5cf6;
+            transform: translateX(-5px);
+            box-shadow: 0 10px 25px -8px #8b5cf6;
+        }
+
+        .path-icon {
+            color: #8b5cf6;
+            font-size: 1.2rem;
+        }
+
+        .path-text {
+            font-weight: 700;
+            color: #1e293b;
+        }
+
+        /* إحصائيات محسنة */
+        .stats {
+            padding: 16px 50px;
+            background: rgba(255, 255, 255, 0.98);
+            color: #475569;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .stats i {
+            color: #8b5cf6;
+            font-size: 1.3rem;
+            animation: spin 4s linear infinite;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* منطقة المحتوى */
+        #content {
+            padding: 45px 50px 60px;
+            background: rgba(255, 255, 255, 0.98);
+            min-height: 50vh;
+        }
+
+        /* شبكة البطاقات المحسنة */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 30px;
+            animation: fadeInUp 0.6s ease;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* بطاقة المصطلح المحسنة */
+        .term-card {
+            background: linear-gradient(145deg, #ffffff, #fafcff);
+            border: 2px solid #e9eef3;
+            border-radius: 40px;
+            padding: 32px 28px;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            box-shadow: 0 20px 35px -15px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .term-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #8b5cf6, #3b82f6, #8b5cf6, #3b82f6);
+            background-size: 300% 100%;
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+
+        .term-card::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.15), transparent);
+            transform: translate(-50%, -50%);
+            transition: width 0.8s, height 0.8s;
+            z-index: 0;
+        }
+
+        .term-card:hover {
+            transform: translateY(-15px) scale(1.03);
+            border-color: #8b5cf6;
+            box-shadow: 0 35px 60px -20px rgba(139, 92, 246, 0.5);
+        }
+
+        .term-card:hover::before {
+            opacity: 1;
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 300% 0%; }
+        }
+
+        .term-card:hover::after {
+            width: 450px;
+            height: 450px;
+        }
+
+        .term-card:active {
+            transform: translateY(-8px) scale(1.02);
+        }
+
+        .term-card h3 {
+            color: #1a1540;
+            font-size: 1.6rem;
+            font-weight: 800;
+            margin-bottom: 18px;
+            letter-spacing: -0.5px;
+            position: relative;
+            z-index: 1;
+            transition: all 0.3s;
+        }
+
+        .term-card:hover h3 {
+            color: #8b5cf6;
+            transform: translateX(5px);
+        }
+
+        .term-card p {
+            color: #475569;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 22px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .term-card small {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: #8b5cf6;
+            font-size: 0.9rem;
+            font-weight: 700;
+            background: linear-gradient(145deg, #f5f3ff, #ede9fe);
+            padding: 10px 20px;
+            border-radius: 60px;
+            border: 2px solid #e9d5ff;
+            position: relative;
+            z-index: 1;
+            transition: all 0.4s;
+        }
+
+        .term-card:hover small {
+            background: #8b5cf6;
+            color: white;
+            border-color: #8b5cf6;
+            transform: translateX(-5px);
+        }
+
+        /* أزرار التخصصات المحسنة للغاية */
+        .specialty-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 20px;
+        }
+
+        .specialty-btn {
+            width: 100%;
+            padding: 36px 32px;
+            background: linear-gradient(145deg, #1a1540, #2d1f55);
+            border: 2px solid rgba(139, 92, 246, 0.5);
+            border-radius: 45px;
+            color: #fff;
+            font-size: 1.5rem;
+            font-weight: 800;
+            text-align: right;
+            cursor: pointer;
+            transition: all 0.5s ease;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 20px 35px -12px rgba(139, 92, 246, 0.4);
+            position: relative;
+            overflow: hidden;
+            letter-spacing: -0.5px;
+        }
+
+        .specialty-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -150%;
+            width: 150%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), rgba(139, 92, 246, 0.3), transparent);
+            transition: left 0.8s;
+        }
+
+        .specialty-btn:hover {
+            background: linear-gradient(145deg, #2d1f55, #3d2a6d);
+            border-color: #8b5cf6;
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 30px 55px -15px #8b5cf6;
+        }
+
+        .specialty-btn:hover::before {
+            left: 100%;
+        }
+
+        .specialty-btn:active {
+            transform: translateY(-5px) scale(1.03);
+        }
+
+        .specialty-btn::after {
+            content: "→";
+            font-size: 2.2rem;
+            opacity: 0.7;
+            transition: all 0.5s;
+            transform: scaleX(-1);
+            color: #fff;
+        }
+
+        .specialty-btn:hover::after {
+            opacity: 1;
+            transform: translateX(-15px) scaleX(-1) scale(1.3);
+        }
+
+        /* أزرار الأقسام المحسنة */
+        .section-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 18px;
+        }
+
+        .section-btn {
+            width: 100%;
+            padding: 28px 24px;
+            background: linear-gradient(145deg, #f8fafc, #ffffff);
+            border: 2px solid #e2e8f0;
+            border-radius: 38px;
+            color: #1e293b;
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-align: right;
+            cursor: pointer;
+            transition: all 0.4s;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 10px 20px -8px rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 8px;
+            height: 100%;
+            background: linear-gradient(to bottom, #8b5cf6, #3b82f6, #8b5cf6);
+            background-size: 200% 200%;
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .section-btn:hover {
+            background: #ffffff;
+            border-color: #8b5cf6;
+            transform: translateX(-12px) translateY(-6px);
+            box-shadow: 0 25px 40px -18px #8b5cf6;
+        }
+
+        .section-btn:hover::before {
+            opacity: 1;
+            animation: gradientShift 3s infinite;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 0% 200%; }
+        }
+
+        .section-btn:active {
+            transform: translateX(-6px) translateY(-3px);
+        }
+
+        .section-btn::after {
+            content: "→";
+            font-size: 1.7rem;
+            opacity: 0.6;
+            transition: all 0.4s;
+            transform: scaleX(-1);
+            color: #8b5cf6;
+        }
+
+        .section-btn:hover::after {
+            opacity: 1;
+            transform: translateX(-12px) scaleX(-1) scale(1.2);
+            color: #8b5cf6;
+        }
+
+        .badge {
+            background: linear-gradient(145deg, #e9e9f0, #ffffff);
+            color: #4c4c7a;
+            padding: 10px 18px;
+            border-radius: 60px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            border: 2px solid #c4b5fd;
+            box-shadow: 0 4px 12px rgba(139, 92, 246, 0.2);
+            transition: all 0.3s;
+        }
+
+        .section-btn:hover .badge {
+            background: #8b5cf6;
+            color: white;
+            border-color: white;
+            transform: scale(1.1);
+        }
+
+        /* لا نتائج */
+        .no-results {
+            text-align: center;
+            color: #94a3b8;
+            padding: 90px 30px;
+            font-size: 1.3rem;
+            background: linear-gradient(145deg, #f8fafc, #ffffff);
+            border-radius: 70px;
+            border: 4px dashed #d9d9f0;
+            animation: pulseEmpty 3s infinite;
+        }
+
+        @keyframes pulseEmpty {
+            0%, 100% { opacity: 0.8; transform: scale(1); border-color: #d9d9f0; }
+            50% { opacity: 1; transform: scale(1.03); border-color: #8b5cf6; }
+        }
+
+        /* قسم معلومات عنا المحسن */
+        .about-section {
+            padding: 60px 50px;
+            background: linear-gradient(135deg, #1a1540 0%, #2d1f55 100%);
+            border-top: 4px solid #8b5cf6;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.4), transparent);
+            border-radius: 50%;
+            animation: floatSlow 18s infinite;
+        }
+
+        .about-section::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -5%;
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.4), transparent);
+            border-radius: 50%;
+            animation: floatSlow 20s infinite reverse;
+        }
+
+        @keyframes floatSlow {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(50px, -50px) rotate(120deg); }
+            66% { transform: translate(-30px, 30px) rotate(240deg); }
+        }
+
+        .about-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 30px;
+            position: relative;
+            display: inline-block;
+            text-shadow: 0 0 40px rgba(139, 92, 246, 0.8);
+            letter-spacing: -0.5px;
+        }
+
+        .about-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 6px;
+            background: linear-gradient(90deg, #8b5cf6, #3b82f6, #8b5cf6);
+            background-size: 200% 100%;
+            border-radius: 3px;
+            animation: shimmer 3s infinite;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .social-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            padding: 20px 40px;
+            border-radius: 80px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.5s;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+            letter-spacing: 0.5px;
+        }
+
+        .social-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -150%;
+            width: 150%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.8s;
+        }
+
+        .social-btn:hover::before {
+            left: 100%;
+        }
+
+        .social-btn.telegram {
+            background: linear-gradient(135deg, #1e96c8, #0e7ab0);
+            color: white;
+            box-shadow: 0 20px 35px -15px #1e96c8;
+        }
+
+        .social-btn.telegram:hover {
+            transform: translateY(-12px) scale(1.1);
+            box-shadow: 0 30px 55px -15px #1e96c8;
+            border-color: white;
+        }
+
+        .social-btn.telegram:active {
+            transform: translateY(-6px) scale(1.05);
+        }
+
+        .social-btn.whatsapp {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white;
+            box-shadow: 0 20px 35px -15px #25D366;
+        }
+
+        .social-btn.whatsapp:hover {
+            transform: translateY(-12px) scale(1.1);
+            box-shadow: 0 30px 55px -15px #25D366;
+            border-color: white;
+        }
+
+        .social-btn.whatsapp:active {
+            transform: translateY(-6px) scale(1.05);
+        }
+
+        .social-btn i {
+            font-size: 1.8rem;
+        }
+
+        .username {
+            font-family: 'Courier New', monospace;
+            font-size: 1.3rem;
+            letter-spacing: 2px;
+        }
+
+        /* سكرول أنيق محسن */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1a1540;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #8b5cf6, #3b82f6);
+            border-radius: 10px;
+            border: 2px solid #1a1540;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, #a78bfa, #60a5fa);
+        }
+
+        /* تصميم متجاوب محسن */
+        @media (max-width: 768px) {
+            .hero-section { padding: 45px 30px 55px; }
+            .hero-title { font-size: 3.5rem; }
+            .hero-subtitle { font-size: 1.2rem; }
+            .search-section { padding: 30px 30px 20px; }
+            .navigation-bar { padding: 15px 30px; }
+            .stats { padding: 12px 30px; }
+            #content { padding: 30px; }
+            .about-section { padding: 40px 30px; }
+            .specialty-grid { grid-template-columns: 1fr; }
+            .section-grid { grid-template-columns: 1fr; }
+            .nav-buttons { width: 100%; justify-content: center; }
+            .path-indicator { width: 100%; }
+            .social-btn { padding: 16px 30px; font-size: 1.1rem; }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title { font-size: 2.5rem; }
+            .hero-stats { gap: 15px; }
+            .stat-number { font-size: 1.8rem; }
+            .stat-item { padding: 12px 18px; }
+            .cards-grid { grid-template-columns: 1fr; }
+            .social-btn { width: 100%; justify-content: center; }
+            .badge { font-size: 0.8rem; padding: 6px 12px; }
+        }
+
+        /* تأثيرات إضافية */
+        .glow-effect {
+            position: relative;
+        }
+
+        .glow-effect::after {
+            content: '';
+            position: absolute;
+            top: -3px;
+            left: -3px;
+            right: -3px;
+            bottom: -3px;
+            background: linear-gradient(45deg, #8b5cf6, #3b82f6, #8b5cf6, #3b82f6);
+            background-size: 300% 300%;
+            border-radius: inherit;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+
+        .glow-effect:hover::after {
+            opacity: 0.4;
+            animation: gradientMove 3s infinite;
+        }
+
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- خلفية متحركة محسنة -->
+    <div class="animated-bg">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <div class="app-container">
+        <!-- الهيدر المحسن -->
+        <div class="hero-section">
+            <div class="badge">
+                <i class="fas fa-crown" style="margin-left: 10px;"></i>
+                الموسوعة التقنية الشاملة
+            </div>
+            <h1 class="hero-title">
+                قـامـوس<br>التقنية
+            </h1>
+            <div class="hero-subtitle">
+                أكثر من 5000 مصطلح في 10 تخصصات تقنية مع شرح مبسط ومتقدم لكل مصطلح
+            </div>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number" id="totalSpecialties">10</span>
+                    <span class="stat-label">تخصصات</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="totalSections">80+</span>
+                    <span class="stat-label">قسم</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="totalTerms">5000+</span>
+                    <span class="stat-label">مصطلح</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- بحث محسن -->
+        <div class="search-section">
+            <div class="search-wrapper">
+                <i class="fas fa-search"></i>
+                <input type="text" id="searchInput" placeholder="ابحث عن أي مصطلح..." oninput="handleSearch()">
+            </div>
+        </div>
+
+        <!-- شريط التنقل المحسن -->
+        <div class="navigation-bar" id="navigationBar">
+            <div class="nav-buttons">
+                <button class="nav-btn" id="backToTermsBtn" onclick="goBackToTerms()" title="رجوع للمصطلحات" disabled>
+                    <i class="fas fa-file-alt"></i>
+                </button>
+                <button class="nav-btn" id="backToSectionsBtn" onclick="goBackToSections()" title="رجوع للأقسام" disabled>
+                    <i class="fas fa-folder"></i>
+                </button>
+                <button class="nav-btn" id="backToSpecialtiesBtn" onclick="goBackToSpecialties()" title="رجوع للتخصصات" disabled>
+                    <i class="fas fa-grid-2"></i>
+                </button>
+            </div>
+            <div class="path-indicator">
+                <i class="fas fa-compass path-icon"></i>
+                <span class="path-text" id="currentPathText">التخصصات</span>
+            </div>
+        </div>
+
+        <!-- عداد محسن -->
+        <div class="stats" id="stats">
+            <i class="fas fa-database"></i>
+            <span id="statsText">مرحباً بك في القاموس التقني</span>
+        </div>
+
+        <!-- المحتوى الرئيسي -->
+        <div id="content"></div>
+
+        <!-- قسم معلومات عنا المحسن -->
+        <div class="about-section">
+            <h2 class="about-title">تواصل معنا</h2>
+            
+            <div class="social-links">
+                <a href="https://t.me/pango404" target="_blank" class="social-btn telegram">
+                    <i class="fab fa-telegram-plane"></i>
+                    <span class="username">@pango404</span>
+                </a>
+                <a href="https://wa.me/obitõ" target="_blank" class="social-btn whatsapp">
+                    <i class="fab fa-whatsapp"></i>
+                    <span class="username">obitõ</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ---------- قاعدة البيانات الكاملة مع جميع التخصصات ----------
+     const data = {
+            // تخصص الشبكات (7 أقسام × 50 مصطلح)
+            "الشبكات": {
+                "أساسيات الشبكات": [
+                    {"term": "IP Address", "def": "عنوان فريد يحدد كل جهاز داخل الشبكة"},
+                    {"term": "Subnet Mask", "def": "يحدد جزء الشبكة وجزء الجهاز"},
+                    {"term": "Gateway", "def": "البوابة التي تربط الشبكة بشبكات أخرى"},
+                    {"term": "MAC Address", "def": "عنوان فريد لبطاقة الشبكة"},
+                    {"term": "Bandwidth", "def": "سعة نقل البيانات في الشبكة"},
+                    {"term": "Latency", "def": "زمن تأخير انتقال البيانات"},
+                    {"term": "Packet", "def": "وحدة البيانات التي تنتقل عبر الشبكة"},
+                    {"term": "Frame", "def": "هيكل البيانات في طبقة ربط البيانات"},
+                    {"term": "Protocol", "def": "قواعد الاتصال بين الأجهزة"},
+                    {"term": "Node", "def": "أي جهاز متصل بالشبكة"},
+                    {"term": "Client", "def": "جهاز يطلب خدمة من الخادم"},
+                    {"term": "Server", "def": "جهاز يقدم خدمات لبقية الأجهزة"},
+                    {"term": "Port", "def": "منفذ منطقي تستخدمه التطبيقات"},
+                    {"term": "Topology", "def": "طريقة ترتيب الأجهزة في الشبكة"},
+                    {"term": "Ethernet", "def": "تقنية الشبكات المحلية"},
+                    {"term": "ISP", "def": "مزود خدمة الإنترنت"},
+                    {"term": "Ping", "def": "أداة اختبار اتصال الشبكة"},
+                    {"term": "Traceroute", "def": "أداة تتبع مسار الحزم"},
+                    {"term": "Throughput", "def": "معدل نقل البيانات الفعلي"},
+                    {"term": "Duplex", "def": "طريقة إرسال واستقبال البيانات"},
+                    {"term": "Full Duplex", "def": "إرسال واستقبال في نفس الوقت"},
+                    {"term": "Half Duplex", "def": "إرسال أو استقبال بالتناوب"},
+                    {"term": "Network Interface", "def": "واجهة اتصال الشبكة"},
+                    {"term": "MTU", "def": "أقصى حجم للحزمة"},
+                    {"term": "ARP", "def": "بروتوكول تحويل IP إلى MAC"},
+                    {"term": "ICMP", "def": "بروتوكول رسائل التحكم"},
+                    {"term": "Broadcast", "def": "إرسال البيانات لكل الأجهزة"},
+                    {"term": "Unicast", "def": "إرسال البيانات لجهاز واحد"},
+                    {"term": "Multicast", "def": "إرسال البيانات لمجموعة أجهزة"},
+                    {"term": "QoS", "def": "جودة الخدمة في الشبكة"},
+                    {"term": "DNS", "def": "نظام أسماء النطاقات"},
+                    {"term": "DHCP", "def": "بروتوكول التكوين الديناميكي للمضيفين"},
+                    {"term": "NAT", "def": "ترجمة عناوين الشبكة"},
+                    {"term": "VPN", "def": "الشبكة الخاصة الافتراضية"},
+                    {"term": "VLAN", "def": "شبكة محلية افتراضية"},
+                    {"term": "Firewall", "def": "جدار ناري لحماية الشبكة"},
+                    {"term": "Proxy", "def": "خادم وسيط"},
+                    {"term": "Load Balancer", "def": "موازن التحميل"},
+                    {"term": "Router", "def": "جهاز توجيه"},
+                    {"term": "Switch", "def": "محول شبكي"},
+                    {"term": "Hub", "def": "موزع شبكي"},
+                    {"term": "Bridge", "def": "جسر شبكي"},
+                    {"term": "Repeater", "def": "مكرر إشارة"},
+                    {"term": "Access Point", "def": "نقطة وصول لاسلكية"},
+                    {"term": "Modem", "def": "مودم"},
+                    {"term": "Patch Panel", "def": "لوحة توصيل"},
+                    {"term": "UTP Cable", "def": "كابل مجدول غير محمي"},
+                    {"term": "Fiber Optic", "def": "كابل ألياف بصرية"},
+                    {"term": "Coaxial Cable", "def": "كابل محوري"},
+                    {"term": "Console Cable", "def": "كابل تحكم"}
+                ],
+                "بروتوكولات الشبكة": [
+                    {"term": "TCP", "def": "بروتوكول التحكم في الإرسال"},
+                    {"term": "UDP", "def": "بروتوكول بيانات المستخدم"},
+                    {"term": "HTTP", "def": "بروتوكول نقل النص الفائق"},
+                    {"term": "HTTPS", "def": "بروتوكول نقل النص الفائق الآمن"},
+                    {"term": "FTP", "def": "بروتوكول نقل الملفات"},
+                    {"term": "SFTP", "def": "بروتوكول نقل الملفات الآمن"},
+                    {"term": "FTPS", "def": "بروتوكول نقل الملفات عبر SSL"},
+                    {"term": "SMTP", "def": "بروتوكول نقل البريد البسيط"},
+                    {"term": "POP3", "def": "بروتوكول مكتب البريد الإصدار 3"},
+                    {"term": "IMAP", "def": "بروتوكول الوصول إلى رسائل الإنترنت"},
+                    {"term": "DNS", "def": "نظام أسماء النطاقات"},
+                    {"term": "DHCP", "def": "بروتوكول التكوين الديناميكي للمضيفين"},
+                    {"term": "ARP", "def": "بروتوكول تحليل العناوين"},
+                    {"term": "RARP", "def": "بروتوكول تحليل العناوين العكسي"},
+                    {"term": "ICMP", "def": "بروتوكول رسائل التحكم في الإنترنت"},
+                    {"term": "IGMP", "def": "بروتوكول إدارة المجموعات"},
+                    {"term": "SNMP", "def": "بروتوكول إدارة الشبكة البسيط"},
+                    {"term": "Telnet", "def": "بروتوكول الاتصال عن بعد"},
+                    {"term": "SSH", "def": "غلاف آمن"},
+                    {"term": "NTP", "def": "بروتوكول وقت الشبكة"},
+                    {"term": "LDAP", "def": "بروتوكول الوصول إلى الدليل الخفيف"},
+                    {"term": "RDP", "def": "بروتوكول سطح المكتب البعيد"},
+                    {"term": "SMB", "def": "كتلة رسائل الخادم"},
+                    {"term": "NFS", "def": "نظام ملفات الشبكة"},
+                    {"term": "BGP", "def": "بروتوكول البوابة الحدودية"},
+                    {"term": "OSPF", "def": "فتح أقصر مسار أولاً"},
+                    {"term": "EIGRP", "def": "بروتوكول توجيه البوابة الداخلية المحسن"},
+                    {"term": "RIP", "def": "بروتوكول معلومات التوجيه"},
+                    {"term": "IS-IS", "def": "النظام الوسيط إلى النظام الوسيط"},
+                    {"term": "MPLS", "def": "تبديل العلامات المتعددة البروتوكولات"},
+                    {"term": "PPP", "def": "بروتوكول نقطة إلى نقطة"},
+                    {"term": "PPPoE", "def": "بروتوكول نقطة إلى نقطة عبر إيثرنت"},
+                    {"term": "L2TP", "def": "بروتوكول النفق من الطبقة الثانية"},
+                    {"term": "PPTP", "def": "بروتوكول النفق من نقطة إلى نقطة"},
+                    {"term": "IPsec", "def": "أمن بروتوكول الإنترنت"},
+                    {"term": "SSL", "def": "طبقة المقابس الآمنة"},
+                    {"term": "TLS", "def": "أمن طبقة النقل"},
+                    {"term": "SIP", "def": "بروتوكول بدء الجلسة"},
+                    {"term": "RTP", "def": "بروتوكول النقل في الوقت الحقيقي"},
+                    {"term": "RTSP", "def": "بروتوكول البث في الوقت الحقيقي"},
+                    {"term": "VoIP", "def": "نقل الصوت عبر الإنترنت"},
+                    {"term": "SCTP", "def": "بروتوكول نقل التحكم في البث"},
+                    {"term": "DCCP", "def": "بروتوكول التحكم في ازدحام مخططات البيانات"},
+                    {"term": "GRE", "def": "تغليف التوجيه العام"},
+                    {"term": "VXLAN", "def": "شبكة محلية افتراضية موسعة عبر الإنترنت"},
+                    {"term": "STP", "def": "بروتوكول الشجرة الممتدة"},
+                    {"term": "RSTP", "def": "بروتوكول الشجرة الممتدة السريع"},
+                    {"term": "MSTP", "def": "بروتوكول الشجرة الممتدة المتعددة"},
+                    {"term": "LLDP", "def": "بروتوكول اكتشاف طبقة الارتباط"},
+                    {"term": "CDP", "def": "بروتوكول اكتشاف سيسكو"}
+                ],
+                "أجهزة الشبكات": [
+                    {"term": "Router", "def": "جهاز يربط شبكات مختلفة ويوجه البيانات بينها"},
+                    {"term": "Switch", "def": "جهاز يربط الأجهزة داخل نفس الشبكة"},
+                    {"term": "Hub", "def": "جهاز بسيط يوزع البيانات على جميع المنافذ"},
+                    {"term": "Bridge", "def": "جهاز يربط شبكتين محليتين"},
+                    {"term": "Repeater", "def": "جهاز يقوي الإشارة الضعيفة"},
+                    {"term": "Access Point", "def": "جهاز يسمح بالاتصال اللاسلكي بالشبكة"},
+                    {"term": "Wireless Controller", "def": "جهاز يتحكم بنقاط الوصول اللاسلكية"},
+                    {"term": "Firewall", "def": "جهاز أو برنامج لحماية الشبكة"},
+                    {"term": "Next-Gen Firewall", "def": "جيل جديد من الجدران النارية"},
+                    {"term": "UTM", "def": "إدارة التهديدات الموحدة"},
+                    {"term": "IDS", "def": "نظام كشف التسلل"},
+                    {"term": "IPS", "def": "نظام منع التسلل"},
+                    {"term": "Load Balancer", "def": "جهاز يوزع الحمل على عدة خوادم"},
+                    {"term": "Proxy Server", "def": "خادم وسيط بين العميل والإنترنت"},
+                    {"term": "VPN Concentrator", "def": "جهاز يركز اتصالات VPN"},
+                    {"term": "VPN Gateway", "def": "بوابة للشبكة الخاصة الافتراضية"},
+                    {"term": "Modem", "def": "جهاز يحول الإشارات الرقمية إلى تماثلية"},
+                    {"term": "DSL Modem", "def": "مودم خط المشترك الرقمي"},
+                    {"term": "Cable Modem", "def": "مودم الكابل"},
+                    {"term": "Optical Modem", "def": "مودم الألياف البصرية"},
+                    {"term": "ONT", "def": "محطة الشبكة الضوئية"},
+                    {"term": "OLT", "def": "محطة الخط الضوئي"},
+                    {"term": "Media Converter", "def": "محول وسائط"},
+                    {"term": "Transceiver", "def": "جهاز إرسال واستقبال"},
+                    {"term": "SFP Module", "def": "وحدة قابلة للتوصيل صغيرة الحجم"},
+                    {"term": "GBIC", "def": "محول واجهة جيجابت"},
+                    {"term": "Patch Panel", "def": "لوحة توصيل"},
+                    {"term": "Keystone Jack", "def": "مقبس كيستون"},
+                    {"term": "Network Card", "def": "بطاقة شبكة"},
+                    {"term": "NIC", "def": "بطاقة واجهة الشبكة"},
+                    {"term": "Wireless NIC", "def": "بطاقة شبكة لاسلكية"},
+                    {"term": "USB Adapter", "def": "محول USB"},
+                    {"term": "Power over Ethernet", "def": "جهاز يوفر الطاقة عبر الإيثرنت"},
+                    {"term": "PoE Injector", "def": "محقن طاقة PoE"},
+                    {"term": "PoE Switch", "def": "محول PoE"},
+                    {"term": "Console Server", "def": "خادم التحكم"},
+                    {"term": "Terminal Server", "def": "خادم الأطراف"},
+                    {"term": "KVM Switch", "def": "محول لوحة المفاتيح والفيديو والفأرة"},
+                    {"term": "Rack", "def": "حامل أجهزة"},
+                    {"term": "Patch Cord", "def": "سلك توصيل"},
+                    {"term": "Structured Cabling", "def": "كابلات مهيكلة"},
+                    {"term": "Cable Tester", "def": "جهاز اختبار الكابلات"},
+                    {"term": "OTDR", "def": "جهاز قياس الانعكاس البصري"},
+                    {"term": "Toner Probe", "def": "جهاز فحص الكابلات"},
+                    {"term": "Network TAP", "def": "جهاز مراقبة الشبكة"},
+                    {"term": "Packet Broker", "def": "وسيط الحزم"},
+                    {"term": "WAN Accelerator", "def": "مسرع الشبكة الواسعة"},
+                    {"term": "SD-WAN Device", "def": "جهاز الشبكة الواسعة المعرفة برمجياً"},
+                    {"term": "uCPE", "def": "جهاز عملاء موحد"},
+                    {"term": "NFV Platform", "def": "منصة محاكاة وظائف الشبكة"}
+                ],
+                "أمن الشبكات": [
+                    {"term": "Firewall", "def": "جدار ناري يمنع الوصول غير المصرح به"},
+                    {"term": "VPN", "def": "شبكة خاصة افتراضية آمنة"},
+                    {"term": "Encryption", "def": "تشفير البيانات لحمايتها"},
+                    {"term": "Decryption", "def": "فك تشفير البيانات"},
+                    {"term": "Authentication", "def": "التحقق من هوية المستخدم"},
+                    {"term": "Authorization", "def": "تحديد صلاحيات المستخدم"},
+                    {"term": "Accounting", "def": "محاسبة وتتبع الأنشطة"},
+                    {"term": "AAA", "def": "نظام المصادقة والتفويض والمحاسبة"},
+                    {"term": "RADIUS", "def": "خدمة مصادقة عن بعد"},
+                    {"term": "TACACS+", "def": "بروتوكول مصادقة متقدم"},
+                    {"term": "Kerberos", "def": "بروتوكول مصادقة قوي"},
+                    {"term": "LDAP", "def": "بروتوكول الوصول إلى الدليل"},
+                    {"term": "Active Directory", "def": "خدمة دليل نشط من مايكروسوفت"},
+                    {"term": "PKI", "def": "البنية التحتية للمفاتيح العامة"},
+                    {"term": "Certificate", "def": "شهادة رقمية"},
+                    {"term": "CA", "def": "سلطة التصديق"},
+                    {"term": "Digital Signature", "def": "توقيع رقمي"},
+                    {"term": "Hashing", "def": "تجزئة البيانات"},
+                    {"term": "MD5", "def": "خوارزمية تجزئة MD5"},
+                    {"term": "SHA", "def": "خوارزمية التجزئة الآمنة"},
+                    {"term": "AES", "def": "معيار التشفير المتقدم"},
+                    {"term": "DES", "def": "معيار تشفير البيانات"},
+                    {"term": "3DES", "def": "ثلاثي DES"},
+                    {"term": "Blowfish", "def": "خوارزمية تشفير بلوفش"},
+                    {"term": "Twofish", "def": "خوارزمية تشفير توفيش"},
+                    {"term": "RSA", "def": "خوارزمية تشفير RSA"},
+                    {"term": "Diffie-Hellman", "def": "بروتوكول تبادل المفاتيح"},
+                    {"term": "IDS", "def": "نظام كشف التسلل"},
+                    {"term": "IPS", "def": "نظام منع التسلل"},
+                    {"term": "HIDS", "def": "نظام كشف التسلل للمضيف"},
+                    {"term": "NIDS", "def": "نظام كشف التسلل للشبكة"},
+                    {"term": "SIEM", "def": "إدارة الأحداث والمعلومات الأمنية"},
+                    {"term": "SOAR", "def": "التنسيق الأمني والاستجابة الآلية"},
+                    {"term": "DLP", "def": "منع فقدان البيانات"},
+                    {"term": "NAC", "def": "التحكم بالوصول للشبكة"},
+                    {"term": "802.1X", "def": "معيار مصادقة الشبكة"},
+                    {"term": "MAC Filtering", "def": "تصفية العناوين"},
+                    {"term": "Port Security", "def": "أمن المنافذ"},
+                    {"term": "DHCP Snooping", "def": "حماية DHCP"},
+                    {"term": "Dynamic ARP Inspection", "def": "فحص ARP الديناميكي"},
+                    {"term": "IP Source Guard", "def": "حماية مصدر IP"},
+                    {"term": "ACL", "def": "قوائم التحكم بالوصول"},
+                    {"term": "VLAN ACL", "def": "قوائم تحكم VLAN"},
+                    {"term": "PACL", "def": "قوائم تحكم المنافذ"},
+                    {"term": "Zone-Based Firewall", "def": "جدار ناري قائم على المناطق"},
+                    {"term": "DMZ", "def": "منطقة منزوعة السلاح"},
+                    {"term": "Honeypot", "def": "وعاء عسل لجذب المخترقين"},
+                    {"term": "Honeynet", "def": "شبكة وعاء عسل"},
+                    {"term": "Sandboxing", "def": "عزل البرامج في بيئة آمنة"},
+                    {"term": "Application Security", "def": "أمن التطبيقات"},
+                    {"term": "Web Application Firewall", "def": "جدار ناري لتطبيقات الويب"}
+                ],
+                "الشبكات اللاسلكية": [
+                    {"term": "Wi-Fi", "def": "تقنية الاتصال اللاسلكي"},
+                    {"term": "WLAN", "def": "شبكة محلية لاسلكية"},
+                    {"term": "WPAN", "def": "شبكة شخصية لاسلكية"},
+                    {"term": "WMAN", "def": "شبكة مدينية لاسلكية"},
+                    {"term": "WWAN", "def": "شبكة واسعة لاسلكية"},
+                    {"term": "SSID", "def": "اسم الشبكة اللاسلكية"},
+                    {"term": "BSSID", "def": "عنوان نقطة الوصول اللاسلكية"},
+                    {"term": "ESSID", "def": "مجموعة نقاط الوصول لنفس الشبكة"},
+                    {"term": "Channel", "def": "قناة الاتصال اللاسلكي"},
+                    {"term": "Frequency", "def": "تردد الموجات المستخدمة"},
+                    {"term": "2.4 GHz", "def": "نطاق تردد 2.4 جيجاهرتز"},
+                    {"term": "5 GHz", "def": "نطاق تردد 5 جيجاهرتز"},
+                    {"term": "6 GHz", "def": "نطاق تردد 6 جيجاهرتز"},
+                    {"term": "Band", "def": "نطاق التردد المستخدم"},
+                    {"term": "MIMO", "def": "تقنية إرسال متعدد المداخل والمخارج"},
+                    {"term": "MU-MIMO", "def": "إرسال متعدد للمستخدمين"},
+                    {"term": "Beamforming", "def": "توجيه الإشارة نحو الأجهزة"},
+                    {"term": "OFDM", "def": "تقنية تضمين الإشارات"},
+                    {"term": "OFDMA", "def": "تقسيم القناة لمستخدمين متعددين"},
+                    {"term": "CSMA/CA", "def": "بروتوكول تجنب التصادم"},
+                    {"term": "RTS/CTS", "def": "بروتوكول طلب الإرسال/الاستعداد للإرسال"},
+                    {"term": "Roaming", "def": "التنقل بين نقاط الوصول"},
+                    {"term": "Handoff", "def": "نقل الاتصال بين نقاط الوصول"},
+                    {"term": "Signal Strength", "def": "قوة الإشارة اللاسلكية"},
+                    {"term": "RSSI", "def": "مؤشر قوة الإشارة المستقبلة"},
+                    {"term": "SNR", "def": "نسبة الإشارة إلى الضوضاء"},
+                    {"term": "Interference", "def": "تداخل الإشارات اللاسلكية"},
+                    {"term": "Hidden Node", "def": "مشكلة العقدة المخفية"},
+                    {"term": "Exposed Node", "def": "مشكلة العقدة المكشوفة"},
+                    {"term": "Ad-hoc Mode", "def": "اتصال مباشر بين الأجهزة"},
+                    {"term": "Infrastructure Mode", "def": "اتصال عبر نقطة وصول"},
+                    {"term": "Mesh Network", "def": "شبكة متداخلة لاسلكية"},
+                    {"term": "Repeater", "def": "موسع نطاق لاسلكي"},
+                    {"term": "Range Extender", "def": "موسع نطاق"},
+                    {"term": "Bridge", "def": "جسر لاسلكي"},
+                    {"term": "WDS", "def": "نظام التوزيع اللاسلكي"},
+                    {"term": "Wi-Fi Direct", "def": "اتصال مباشر عبر Wi-Fi"},
+                    {"term": "Bluetooth", "def": "تقنية بلوتوث"},
+                    {"term": "Bluetooth Low Energy", "def": "بلوتوث منخفض الطاقة"},
+                    {"term": "ZigBee", "def": "بروتوكول ZigBee"},
+                    {"term": "Z-Wave", "def": "بروتوكول Z-Wave"},
+                    {"term": "NFC", "def": "الاتصال قريب المدى"},
+                    {"term": "RFID", "def": "التعريف بترددات الراديو"},
+                    {"term": "Li-Fi", "def": "الاتصال بالضوء"},
+                    {"term": "WiMAX", "def": "قابلية التشغيل البيني للوصول إلى الموجات"},
+                    {"term": "LTE", "def": "تطور طويل الأمد"},
+                    {"term": "5G", "def": "الجيل الخامس"},
+                    {"term": "4G", "def": "الجيل الرابع"},
+                    {"term": "3G", "def": "الجيل الثالث"},
+                    {"term": "Satellite Internet", "def": "إنترنت عبر الأقمار الصناعية"},
+                    {"term": "Starlink", "def": "إنترنت ستارلينك الفضائي"}
+                ],
+                "IPv4 و IPv6": [
+                    {"term": "IPv4", "def": "الإصدار الرابع من بروتوكول الإنترنت"},
+                    {"term": "IPv6", "def": "الإصدار السادس من بروتوكول الإنترنت"},
+                    {"term": "32-bit", "def": "طول عنوان IPv4 بالبت"},
+                    {"term": "128-bit", "def": "طول عنوان IPv6 بالبت"},
+                    {"term": "Decimal Notation", "def": "التمثيل العشري لعناوين IPv4"},
+                    {"term": "Hexadecimal Notation", "def": "التمثيل السداسي عشر لعناوين IPv6"},
+                    {"term": "Class A", "def": "فئة A للعناوين (شبكات كبيرة)"},
+                    {"term": "Class B", "def": "فئة B للعناوين (شبكات متوسطة)"},
+                    {"term": "Class C", "def": "فئة C للعناوين (شبكات صغيرة)"},
+                    {"term": "Class D", "def": "فئة D للعناوين (بث متعدد)"},
+                    {"term": "Class E", "def": "فئة E للعناوين (تجريبية)"},
+                    {"term": "Private IP", "def": "عناوين داخلية غير قابلة للتوجيه"},
+                    {"term": "Public IP", "def": "عناوين عامة على الإنترنت"},
+                    {"term": "APIPA", "def": "عناوين تلقائية عند فشل DHCP"},
+                    {"term": "Loopback", "def": "عنوان اختبار ذاتي (127.0.0.1)"},
+                    {"term": "Broadcast Address", "def": "عنوان البث لجميع الأجهزة"},
+                    {"term": "Network Address", "def": "عنوان الشبكة"},
+                    {"term": "CIDR", "def": "توجيه بين النطاقات بدون فئات"},
+                    {"term": "VLSM", "def": "قناع شبكة متغير الطول"},
+                    {"term": "Subnetting", "def": "تقسيم الشبكة إلى شبكات فرعية"},
+                    {"term": "Supernetting", "def": "دمج شبكات في شبكة أكبر"},
+                    {"term": "NAT", "def": "ترجمة العناوين الخاصة إلى عامة"},
+                    {"term": "PAT", "def": "ترجمة العناوين مع المنافذ"},
+                    {"term": "Static NAT", "def": "ترجمة عناوين ثابتة"},
+                    {"term": "Dynamic NAT", "def": "ترجمة عناوين ديناميكية"},
+                    {"term": "Static IP", "def": "عنوان ثابت لا يتغير"},
+                    {"term": "Dynamic IP", "def": "عنوان متغير يتم توزيعه تلقائياً"},
+                    {"term": "DHCP Lease", "def": "مدة صلاحية العنوان الموزع"},
+                    {"term": "DHCP Pool", "def": "مجموعة عناوين DHCP"},
+                    {"term": "DHCP Reservation", "def": "حجز عنوان DHCP"},
+                    {"term": "IPv6 Address Types", "def": "أنواع عناوين IPv6"},
+                    {"term": "Unicast IPv6", "def": "عنوان IPv6 لجهاز واحد"},
+                    {"term": "Multicast IPv6", "def": "عنوان IPv6 لمجموعة أجهزة"},
+                    {"term": "Anycast IPv6", "def": "عنوان IPv6 لأقرب جهاز"},
+                    {"term": "Link-Local Address", "def": "عنوان محلي للرابط"},
+                    {"term": "Unique Local Address", "def": "عنوان محلي فريد"},
+                    {"term": "Global Unicast", "def": "عنوان عام فريد"},
+                    {"term": "Solicited-Node Multicast", "def": "بث متعدد للعقد المطلوبة"},
+                    {"term": "IPv6 Header", "def": "رأس IPv6"},
+                    {"term": "Extension Headers", "def": "رؤوس موسعة"},
+                    {"term": "Flow Label", "def": "علامة التدفق"},
+                    {"term": "Traffic Class", "def": "فئة المرور"},
+                    {"term": "Hop Limit", "def": "حد القفزات"},
+                    {"term": "Neighbor Discovery", "def": "اكتشاف الجيران"},
+                    {"term": "Router Solicitation", "def": "طلب الموجه"},
+                    {"term": "Router Advertisement", "def": "إعلان الموجه"},
+                    {"term": "Neighbor Solicitation", "def": "طلب الجار"},
+                    {"term": "Neighbor Advertisement", "def": "إعلان الجار"},
+                    {"term": "Duplicate Address Detection", "def": "كشف العنوان المكرر"},
+                    {"term": "IPv6 over IPv4", "def": "IPv6 عبر IPv4"},
+                    {"term": "6to4", "def": "تقنية الانتقال 6to4"}
+                ],
+                "استكشاف الأخطاء": [
+                    {"term": "Troubleshooting", "def": "استكشاف الأخطاء وإصلاحها"},
+                    {"term": "Ping", "def": "اختبار الاتصال بجهاز"},
+                    {"term": "Traceroute", "def": "تتبع مسار الحزم"},
+                    {"term": "Pathping", "def": "دمج بين ping و traceroute"},
+                    {"term": "Telnet", "def": "اتصال بجهاز عن بعد"},
+                    {"term": "SSH", "def": "اتصال آمن بجهاز بعيد"},
+                    {"term": "NSLookup", "def": "الاستعلام عن DNS"},
+                    {"term": "Dig", "def": "أداة متقدمة للاستعلام عن DNS"},
+                    {"term": "Host", "def": "أداة استعلام DNS بسيطة"},
+                    {"term": "Ipconfig", "def": "عرض إعدادات IP في Windows"},
+                    {"term": "Ifconfig", "def": "عرض إعدادات IP في Linux"},
+                    {"term": "Ip addr", "def": "أمر عرض IP في Linux الحديث"},
+                    {"term": "Netstat", "def": "عرض اتصالات الشبكة"},
+                    {"term": "SS", "def": "أمر لعرض إحصائيات المقابس"},
+                    {"term": "ARP Command", "def": "عرض جدول ARP"},
+                    {"term": "Route Command", "def": "عرض جدول التوجيه"},
+                    {"term": "IP Route", "def": "أمر توجيه IP في Linux"},
+                    {"term": "Nmap", "def": "أداة فحص الشبكة"},
+                    {"term": "Netcat", "def": "أداة شبكة متعددة الاستخدامات"},
+                    {"term": "Wireshark", "def": "محلل حزم الشبكة"},
+                    {"term": "TCPDump", "def": "أداة التقاط الحزم في Linux"},
+                    {"term": "Tshark", "def": "نسخة سطر أوامر من Wireshark"},
+                    {"term": "SNMP Walk", "def": "استعلام معلومات من أجهزة الشبكة"},
+                    {"term": "SNMP Get", "def": "الحصول على قيمة SNMP محددة"},
+                    {"term": "Syslog", "def": "سجل أحداث النظام"},
+                    {"term": "Rsyslog", "def": "نظام تسجيل متقدم"},
+                    {"term": "Journalctl", "def": "أداة عرض سجلات systemd"},
+                    {"term": "Debug Command", "def": "أوامر التصحيح في أجهزة الشبكات"},
+                    {"term": "Show Commands", "def": "أوامر العرض في أجهزة سيسكو"},
+                    {"term": "Terminal Monitor", "def": "مراقبة الطرفية"},
+                    {"term": "Logging Console", "def": "تسجيل على الكونسول"},
+                    {"term": "Loopback Test", "def": "اختبار الحلقة الذاتية"},
+                    {"term": "Cable Tester", "def": "جهاز اختبار الكابلات"},
+                    {"term": "OTDR", "def": "جهاز اختبار كابلات الألياف"},
+                    {"term": "Time Domain Reflectometer", "def": "جهاز قياس انعكاس المجال الزمني"},
+                    {"term": "Throughput Test", "def": "اختبار سرعة النقل"},
+                    {"term": "Iperf", "def": "أداة اختبار سرعة الشبكة"},
+                    {"term": "Iperf3", "def": "إصدار محدث من Iperf"},
+                    {"term": "Speedtest", "def": "اختبار سرعة الإنترنت"},
+                    {"term": "Latency Test", "def": "اختبار زمن الاستجابة"},
+                    {"term": "Jitter Test", "def": "اختبار تذبذب زمن الوصول"},
+                    {"term": "Packet Loss", "def": "فقدان الحزم"},
+                    {"term": "MTU Issue", "def": "مشكلة حجم الحزمة"},
+                    {"term": "Path MTU Discovery", "def": "اكتشاف MTU للمسار"},
+                    {"term": "Duplicate IP", "def": "عنوان IP مكرر"},
+                    {"term": "IP Conflict", "def": "تضارب عناوين IP"},
+                    {"term": "DNS Issue", "def": "مشكلة في ترجمة الأسماء"},
+                    {"term": "DHCP Issue", "def": "مشكلة في توزيع العناوين"},
+                    {"term": "Firewall Blocking", "def": "حظر من الجدار الناري"},
+                    {"term": "ACL Blocking", "def": "حظر من قوائم التحكم"},
+                    {"term": "Routing Loop", "def": "حلقة توجيه"}
+                ]
+            },
+            
+            // باقي التخصصات // ---------- قاعدة بيانات البرمجة (3 أقسام × 20 مصطلح = 60 مصطلح) ----------
+// استبدل قسم "البرمجة" في ملفك بهذا الكود بالكامل
+
+"البرمجة": {
+    // القسم الأول: أساسيات البرمجة (20 مصطلح)
+    "أساسيات البرمجة": [
+        {"term": "Algorithm", "def": "خطوات منظمة ومنطقية لحل مشكلة معينة"},
+        {"term": "Variable", "def": "مساحة في الذاكرة تخزن قيمة يمكن تغييرها"},
+        {"term": "Data Type", "def": "يحدد نوع البيانات التي يمكن تخزينها (نص، رقم، منطقي)"},
+        {"term": "Integer", "def": "نوع بيانات يمثل الأعداد الصحيحة مثل 5, -3, 0"},
+        {"term": "Float", "def": "نوع بيانات يمثل الأعداد العشرية مثل 3.14, -0.5"},
+        {"term": "String", "def": "نوع بيانات يمثل النصوص مثل 'مرحبا'"},
+        {"term": "Boolean", "def": "نوع بيانات يمثل قيمتين فقط: صحيح (true) أو خطأ (false)"},
+        {"term": "Array", "def": "هيكل بيانات يخزن مجموعة من العناصر في متغير واحد"},
+        {"term": "Loop", "def": "هيكل تكرار لتنفيذ كتلة من الأوامر عدة مرات"},
+        {"term": "Condition", "def": "هيكل شرطي لتنفيذ أوامر بناءً على تحقق شرط معين"},
+        {"term": "Function", "def": "كتلة من الأوامر القابلة لإعادة الاستخدام تؤدي مهمة محددة"},
+        {"term": "Parameter", "def": "متغير يتم تمريره إلى الدالة عند استدعائها"},
+        {"term": "Return", "def": "كلمة مفتاحية لإرجاع قيمة من الدالة"},
+        {"term": "Class", "def": "قالب أو مخطط لإنشاء الكائنات في البرمجة الكائنية"},
+        {"term": "Object", "def": "نسخة من كلاس تحتوي على خصائص وطرق خاصة"},
+        {"term": "Method", "def": "دالة تنتمي إلى كلاس أو كائن معين"},
+        {"term": "Attribute", "def": "خاصية أو متغير ينتمي إلى كلاس أو كائن"},
+        {"term": "Constructor", "def": "دالة خاصة يتم استدعاؤها عند إنشاء كائن جديد"},
+        {"term": "Inheritance", "def": "آلية تسمح لكلاس بوراثة خصائص وطرق من كلاس آخر"},
+        {"term": "Polymorphism", "def": "قدرة الكائنات على اتخاذ أشكال متعددة بنفس الواجهة"}
+    ],
+
+    // القسم الثاني: لغات البرمجة (20 مصطلح)
+    "لغات البرمجة": [
+        {"term": "Python", "def": "لغة برمجة عالية المستوى سهلة التعلم وقوية"},
+        {"term": "Java", "def": "لغة برمجة كائنية تعمل على منصات متعددة"},
+        {"term": "JavaScript", "def": "لغة برمجة لتطوير الويب وتفاعل الصفحات"},
+        {"term": "C", "def": "لغة برمجة هيكلية قديمة وقوية تستخدم في الأنظمة المضمنة"},
+        {"term": "C++", "def": "لغة برمجة كائنية مشتقة من C تدعم البرمجة متعددة الأنماط"},
+        {"term": "C#", "def": "لغة برمجة من مايكروسوفت لتطوير تطبيقات .NET"},
+        {"term": "PHP", "def": "لغة برمجة لتطوير الويب الخلفي وتوليد صفحات ديناميكية"},
+        {"term": "Ruby", "def": "لغة برمجة ديناميكية معروفة بسهولة قراءة الكود"},
+        {"term": "Swift", "def": "لغة برمجة لتطوير تطبيقات iOS و macOS من Apple"},
+        {"term": "Kotlin", "def": "لغة برمجة حديثة لتطوير تطبيقات Android"},
+        {"term": "Go", "def": "لغة برمجة من جوجل تتميز بالبساطة والأداء العالي"},
+        {"term": "Rust", "def": "لغة برمجة سريعة وآمنة تركز على الأداء والسلامة"},
+        {"term": "TypeScript", "def": "امتداد لجافاسكريبت يضيف أنواع بيانات ثابتة"},
+        {"term": "SQL", "def": "لغة الاستعلام الهيكلية للتعامل مع قواعد البيانات"},
+        {"term": "R", "def": "لغة برمجة للتحليل الإحصائي والرسوم البيانية"},
+        {"term": "Dart", "def": "لغة برمجة من جوجل لتطوير تطبيقات Flutter"},
+        {"term": "Perl", "def": "لغة برمجة لمعالجة النصوص وإدارة الأنظمة"},
+        {"term": "Scala", "def": "لغة برمجة تجمع بين البرمجة الكائنية والوظيفية"},
+        {"term": "Lua", "def": "لغة برمجة خفيفة تستخدم كلغة تضمين في التطبيقات"},
+        {"term": "Haskell", "def": "لغة برمجة وظيفية بحتة معروفة بدقتها الرياضية"}
+    ],
+
+    // القسم الثالث: مفاهيم متقدمة (20 مصطلح)
+    "مفاهيم متقدمة": [
+        {"term": "OOP", "def": "البرمجة كائنية التوجه - نمط برمجة يعتمد على الكائنات"},
+        {"term": "Functional Programming", "def": "البرمجة الوظيفية التي تركز على الدوال"},
+        {"term": "Recursion", "def": "دالة تستدعي نفسها لحل مشكلة مقسمة لأجزاء أصغر"},
+        {"term": "Data Structure", "def": "طريقة تنظيم وتخزين البيانات في الحاسوب"},
+        {"term": "Algorithm Complexity", "def": "قياس كفاءة الخوارزمية من حيث الزمن والذاكرة"},
+        {"term": "Big O Notation", "def": "رمز رياضي لوصف كفاءة الخوارزميات"},
+        {"term": "Debugging", "def": "عملية اكتشاف وإصلاح الأخطاء في البرمجيات"},
+        {"term": "API", "def": "واجهة برمجة التطبيقات للتواصل بين البرامج"},
+        {"term": "Framework", "def": "إطار عمل يوفر هيكل أساسي لتطوير التطبيقات"},
+        {"term": "Library", "def": "مجموعة من الدوال الجاهزة لتسهيل البرمجة"},
+        {"term": "IDE", "def": "بيئة تطوير متكاملة لكتابة وتجربة الأكواد"},
+        {"term": "Version Control", "def": "نظام لإدارة وتتبع التغييرات في الملفات"},
+        {"term": "Git", "def": "نظام تحكم بالنسخ الأكثر شهرة لتتبع التغييرات"},
+        {"term": "Repository", "def": "مستودع لتخزين وإدارة ملفات المشروع"},
+        {"term": "Refactoring", "def": "إعادة هيكلة الكود لتحسينه دون تغيير وظائفه"},
+        {"term": "Design Pattern", "def": "حلول نموذجية لمشاكل برمجية متكررة"},
+        {"term": "MVC", "def": "نمط معماري يفصل التطبيق لنموذج وعرض ومتحكم"},
+        {"term": "REST API", "def": "أسلوب لتصميم واجهات برمجة التطبيقات"},
+        {"term": "JSON", "def": "صيغة خفيفة لتبادل البيانات بين الأنظمة"},
+        {"term": "XML", "def": "لغة ترميز لتخزين وتبادل البيانات المهيكلة"}
+    ]
+},
+   // ---------- قاعدة بيانات قواعد البيانات (5 أقسام × 50 مصطلح = 250 مصطلح) ----------
+// ضع هذا الكود مكان قسم "قواعد البيانات" في ملفك
+
+"قواعد البيانات": {
+    // القسم الأول: مفاهيم أساسية (50 مصطلح)
+    "مفاهيم أساسية": [
+        {"term": "Database", "def": "قاعدة بيانات لتخزين البيانات بشكل منظم"},
+        {"term": "DBMS", "def": "نظام إدارة قواعد البيانات"},
+        {"term": "RDBMS", "def": "نظام إدارة قواعد البيانات العلائقية"},
+        {"term": "Table", "def": "جدول يتكون من صفوف وأعمدة لتخزين البيانات"},
+        {"term": "Row", "def": "صف أو سجل في الجدول يمثل كياناً واحداً"},
+        {"term": "Record", "def": "سجل كامل في قاعدة البيانات"},
+        {"term": "Column", "def": "عمود أو حقل في الجدول يمثل خاصية معينة"},
+        {"term": "Field", "def": "حقل في قاعدة البيانات"},
+        {"term": "Tuple", "def": "صف في قاعدة البيانات العلائقية"},
+        {"term": "Attribute", "def": "صفة أو خاصية في قاعدة البيانات"},
+        {"term": "Entity", "def": "كيان يمثل شيئاً حقيقياً في العالم"},
+        {"term": "Relationship", "def": "علاقة بين جدولين أو أكثر"},
+        {"term": "Schema", "def": "هيكل قاعدة البيانات"},
+        {"term": "Instance", "def": "نسخة من قاعدة البيانات في وقت محدد"},
+        {"term": "Metadata", "def": "بيانات تصف البيانات"},
+        {"term": "Data Dictionary", "def": "قاموس البيانات يصف هيكل قاعدة البيانات"},
+        {"term": "Primary Key", "def": "مفتاح رئيسي فريد لكل سجل"},
+        {"term": "Foreign Key", "def": "مفتاح خارجي يربط جدولين"},
+        {"term": "Composite Key", "def": "مفتاح مركب من عدة أعمدة"},
+        {"term": "Candidate Key", "def": "مفتاح مرشح ليكون رئيسياً"},
+        {"term": "Alternate Key", "def": "مفتاح بديل من المفاتيح المرشحة"},
+        {"term": "Super Key", "def": "مفتاح فائق يحدد السجل بشكل فريد"},
+        {"term": "Natural Key", "def": "مفتاح طبيعي من البيانات نفسها"},
+        {"term": "Surrogate Key", "def": "مفتاح بديل يتم إنشاؤه تلقائياً"},
+        {"term": "Index", "def": "فهرس لتسريع عمليات البحث"},
+        {"term": "Unique Constraint", "def": "قيد يضمن عدم تكرار القيم"},
+        {"term": "Not Null Constraint", "def": "قيد يمنع القيم الفارغة"},
+        {"term": "Check Constraint", "def": "قيد للتحقق من صحة البيانات"},
+        {"term": "Default Constraint", "def": "قيمة افتراضية للحقل"},
+        {"term": "View", "def": "عرض افتراضي للبيانات"},
+        {"term": "Materialized View", "def": "عرض مادي يخزن البيانات فعلياً"},
+        {"term": "Stored Procedure", "def": "إجراء مخزن في قاعدة البيانات"},
+        {"term": "Function", "def": "دالة في قاعدة البيانات"},
+        {"term": "Trigger", "def": "مشغل ينفذ تلقائياً عند حدث معين"},
+        {"term": "Cursor", "def": "مؤشر للتنقل في مجموعة النتائج"},
+        {"term": "Transaction", "def": "معاملة متكاملة من العمليات"},
+        {"term": "ACID", "def": "خصائص المعاملات (الذرية، الاتساق، العزل، الديمومة)"},
+        {"term": "Atomicity", "def": "الذرية - كل العمليات تنفذ أو لا شيء"},
+        {"term": "Consistency", "def": "الاتساق - الحفاظ على صحة البيانات"},
+        {"term": "Isolation", "def": "العزل - عدم تأثير المعاملات على بعضها"},
+        {"term": "Durability", "def": "الديمومة - بقاء التغييرات بعد التنفيذ"},
+        {"term": "Commit", "def": "تأكيد المعاملة وحفظ التغييرات"},
+        {"term": "Rollback", "def": "تراجع عن المعاملة"},
+        {"term": "Savepoint", "def": "نقطة حفظ في المعاملة"},
+        {"term": "Concurrency", "def": "التزامن في الوصول للبيانات"},
+        {"term": "Lock", "def": "قفل على البيانات لمنع التعديل المتزامن"},
+        {"term": "Deadlock", "def": "جمود نتيجة انتظار معاملات لبعضها"},
+        {"term": "Normalization", "def": "تطبيع البيانات لتجنب التكرار"},
+        {"term": "Denormalization", "def": "إلغاء التطبيع لتحسين الأداء"},
+        {"term": "Data Integrity", "def": "سلامة البيانات وصحتها"},
+        {"term": "Data Redundancy", "def": "تكرار البيانات"}
+    ],
+
+    // القسم الثاني: SQL (50 مصطلح)
+    "SQL": [
+        {"term": "SQL", "def": "لغة الاستعلام الهيكلية"},
+        {"term": "DDL", "def": "لغة تعريف البيانات (CREATE, ALTER, DROP)"},
+        {"term": "DML", "def": "لغة معالجة البيانات (SELECT, INSERT, UPDATE, DELETE)"},
+        {"term": "DCL", "def": "لغة التحكم في البيانات (GRANT, REVOKE)"},
+        {"term": "TCL", "def": "لغة التحكم في المعاملات (COMMIT, ROLLBACK)"},
+        {"term": "CREATE", "def": "إنشاء جدول أو قاعدة بيانات"},
+        {"term": "ALTER", "def": "تعديل هيكل الجدول"},
+        {"term": "DROP", "def": "حذف جدول أو قاعدة بيانات"},
+        {"term": "TRUNCATE", "def": "حذف كل البيانات مع الاحتفاظ بالهيكل"},
+        {"term": "RENAME", "def": "إعادة تسمية جدول"},
+        {"term": "SELECT", "def": "استعلام البيانات"},
+        {"term": "INSERT", "def": "إدراج بيانات جديدة"},
+        {"term": "UPDATE", "def": "تحديث بيانات موجودة"},
+        {"term": "DELETE", "def": "حذف بيانات"},
+        {"term": "MERGE", "def": "دمج بيانات (إدراج أو تحديث)"},
+        {"term": "WHERE", "def": "شرط لتصفية النتائج"},
+        {"term": "AND", "def": "و - لربط الشروط"},
+        {"term": "OR", "def": "أو - لربط الشروط"},
+        {"term": "NOT", "def": "ليس - لنفي الشرط"},
+        {"term": "IN", "def": "التحقق من وجود القيمة في قائمة"},
+        {"term": "BETWEEN", "def": "التحقق من وجود القيمة بين قيمتين"},
+        {"term": "LIKE", "def": "مطابقة نمط معين"},
+        {"term": "IS NULL", "def": "التحقق من القيم الفارغة"},
+        {"term": "IS NOT NULL", "def": "التحقق من القيم غير الفارغة"},
+        {"term": "DISTINCT", "def": "إرجاع قيم فريدة"},
+        {"term": "ORDER BY", "def": "ترتيب النتائج تصاعدياً أو تنازلياً"},
+        {"term": "GROUP BY", "def": "تجميع النتائج حسب حقل معين"},
+        {"term": "HAVING", "def": "شرط على المجموعات (مع GROUP BY)"},
+        {"term": "JOIN", "def": "ربط جدولين أو أكثر"},
+        {"term": "INNER JOIN", "def": "ربط داخلي - يرجع السجلات المتطابقة فقط"},
+        {"term": "LEFT JOIN", "def": "ربط يساري - يرجع كل سجلات الجدول الأيسر"},
+        {"term": "RIGHT JOIN", "def": "ربط يميني - يرجع كل سجلات الجدول الأيمن"},
+        {"term": "FULL JOIN", "def": "ربط كامل - يرجع كل السجلات من الجدولين"},
+        {"term": "CROSS JOIN", "def": "ربط كارتيزي - كل سجل مع كل سجل"},
+        {"term": "SELF JOIN", "def": "ربط الجدول مع نفسه"},
+        {"term": "UNION", "def": "دمج نتائج استعلامين مع إزالة التكرار"},
+        {"term": "UNION ALL", "def": "دمج نتائج استعلامين مع التكرار"},
+        {"term": "INTERSECT", "def": "تقاطع نتائج استعلامين"},
+        {"term": "EXCEPT", "def": "نتائج استعلام ناقص استعلام آخر"},
+        {"term": "Subquery", "def": "استعلام فرعي داخل استعلام آخر"},
+        {"term": "Correlated Subquery", "def": "استعلام فرعي مرتبط بالاستعلام الخارجي"},
+        {"term": "EXISTS", "def": "التحقق من وجود نتائج"},
+        {"term": "ANY", "def": "أي من القيم"},
+        {"term": "ALL", "def": "كل القيم"},
+        {"term": "CASE", "def": "عبارة شرطية في SQL"},
+        {"term": "COALESCE", "def": "إرجاع أول قيمة غير فارغة"},
+        {"term": "NULLIF", "def": "إرجاع NULL إذا تساوت القيمتان"},
+        {"term": "CAST", "def": "تحويل نوع البيانات"},
+        {"term": "CONVERT", "def": "تحويل نوع البيانات (خاص بـ SQL Server)"},
+        {"term": "WITH", "def": "استعلام مشترك (CTE)"}
+    ],
+
+    // القسم الثالث: الدوال والتجميع (50 مصطلح)
+    "الدوال والتجميع": [
+        {"term": "Aggregate Functions", "def": "دوال التجميع"},
+        {"term": "COUNT", "def": "عدد الصفوف"},
+        {"term": "COUNT(*)", "def": "عدد كل الصفوف"},
+        {"term": "COUNT(column)", "def": "عدد القيم غير الفارغة في عمود"},
+        {"term": "COUNT(DISTINCT)", "def": "عدد القيم الفريدة"},
+        {"term": "SUM", "def": "مجموع القيم الرقمية"},
+        {"term": "AVG", "def": "متوسط القيم الرقمية"},
+        {"term": "MIN", "def": "أصغر قيمة"},
+        {"term": "MAX", "def": "أكبر قيمة"},
+        {"term": "Scalar Functions", "def": "دوال أحادية القيمة"},
+        {"term": "String Functions", "def": "دوال النصوص"},
+        {"term": "CONCAT", "def": "دمج نصين أو أكثر"},
+        {"term": "CONCAT_WS", "def": "دمج نصوص مع فاصل"},
+        {"term": "SUBSTRING", "def": "استخراج جزء من نص"},
+        {"term": "LEFT", "def": "استخراج أحرف من اليسار"},
+        {"term": "RIGHT", "def": "استخراج أحرف من اليمين"},
+        {"term": "LENGTH", "def": "طول النص"},
+        {"term": "CHAR_LENGTH", "def": "عدد الأحرف في النص"},
+        {"term": "UPPER", "def": "تحويل النص لأحرف كبيرة"},
+        {"term": "LOWER", "def": "تحويل النص لأحرف صغيرة"},
+        {"term": "TRIM", "def": "إزالة المسافات من البداية والنهاية"},
+        {"term": "LTRIM", "def": "إزالة المسافات من اليسار"},
+        {"term": "RTRIM", "def": "إزالة المسافات من اليمين"},
+        {"term": "REPLACE", "def": "استبدال نص بآخر"},
+        {"term": "REVERSE", "def": "عكس النص"},
+        {"term": "POSITION", "def": "موقع نص داخل نص"},
+        {"term": "Date Functions", "def": "دوال التاريخ والوقت"},
+        {"term": "NOW", "def": "التاريخ والوقت الحالي"},
+        {"term": "CURRENT_DATE", "def": "التاريخ الحالي"},
+        {"term": "CURRENT_TIME", "def": "الوقت الحالي"},
+        {"term": "DATE", "def": "استخراج التاريخ من قيمة"},
+        {"term": "TIME", "def": "استخراج الوقت من قيمة"},
+        {"term": "YEAR", "def": "استخراج السنة من تاريخ"},
+        {"term": "MONTH", "def": "استخراج الشهر من تاريخ"},
+        {"term": "DAY", "def": "استخراج اليوم من تاريخ"},
+        {"term": "HOUR", "def": "استخراج الساعة من وقت"},
+        {"term": "MINUTE", "def": "استخراج الدقيقة من وقت"},
+        {"term": "SECOND", "def": "استخراج الثانية من وقت"},
+        {"term": "DATEADD", "def": "إضافة فترة زمنية لتاريخ"},
+        {"term": "DATEDIFF", "def": "الفرق بين تاريخين"},
+        {"term": "Mathematical Functions", "def": "دوال رياضية"},
+        {"term": "ROUND", "def": "تقريب رقم"},
+        {"term": "CEIL", "def": "تقريب لأعلى"},
+        {"term": "FLOOR", "def": "تقريب لأسفل"},
+        {"term": "ABS", "def": "قيمة مطلقة"},
+        {"term": "MOD", "def": "باقي القسمة"},
+        {"term": "POWER", "def": "الأس"},
+        {"term": "SQRT", "def": "الجذر التربيعي"},
+        {"term": "RAND", "def": "رقم عشوائي"},
+        {"term": "Window Functions", "def": "دوال النوافذ"},
+        {"term": "ROW_NUMBER", "def": "رقم الصف داخل المجموعة"}
+    ],
+
+    // القسم الرابع: NoSQL (50 مصطلح)
+    "NoSQL": [
+        {"term": "NoSQL", "def": "قواعد بيانات غير علائقية"},
+        {"term": "Document Store", "def": "مخزن مستندات (مثل MongoDB)"},
+        {"term": "Key-Value Store", "def": "مخزن مفتاح-قيمة (مثل Redis)"},
+        {"term": "Column Family Store", "def": "مخزن عائلات الأعمدة (مثل Cassandra)"},
+        {"term": "Graph Database", "def": "قاعدة بيانات رسومية (مثل Neo4j)"},
+        {"term": "MongoDB", "def": "قاعدة بيانات مستندات شهيرة"},
+        {"term": "Document", "def": "مستند في MongoDB (مشابه لـ JSON)"},
+        {"term": "Collection", "def": "مجموعة مستندات في MongoDB"},
+        {"term": "BSON", "def": "صيغة تخزين ثنائية تشبه JSON"},
+        {"term": "_id", "def": "معرف فريد في MongoDB"},
+        {"term": "Embedded Document", "def": "مستند مضمن داخل مستند آخر"},
+        {"term": "Reference", "def": "مرجع لمستند آخر"},
+        {"term": "Index in MongoDB", "def": "فهرس في MongoDB"},
+        {"term": "Aggregation Pipeline", "def": "خط أنابيب التجميع في MongoDB"},
+        {"term": "Redis", "def": "قاعدة بيانات في الذاكرة من نوع مفتاح-قيمة"},
+        {"term": "Redis String", "def": "نوع بيانات نصي في Redis"},
+        {"term": "Redis List", "def": "نوع بيانات قائمة في Redis"},
+        {"term": "Redis Set", "def": "نوع بيانات مجموعة في Redis"},
+        {"term": "Redis Hash", "def": "نوع بيانات تجزئة في Redis"},
+        {"term": "Redis Sorted Set", "def": "مجموعة مرتبة في Redis"},
+        {"term": "Redis Pub/Sub", "def": "نظام النشر والاشتراك في Redis"},
+        {"term": "Redis Cache", "def": "تخزين مؤقت باستخدام Redis"},
+        {"term": "Cassandra", "def": "قاعدة بيانات أعمدة موزعة"},
+        {"term": "Partition Key", "def": "مفتاح التقسيم في Cassandra"},
+        {"term": "Clustering Key", "def": "مفتاح التجميع في Cassandra"},
+        {"term": "CQL", "def": "لغة استعلام Cassandra"},
+        {"term": "Neo4j", "def": "قاعدة بيانات رسومية"},
+        {"term": "Node", "def": "عقدة في قاعدة البيانات الرسومية"},
+        {"term": "Relationship", "def": "علاقة بين العقد"},
+        {"term": "Property", "def": "خاصية في Neo4j"},
+        {"term": "Label", "def": "تسمية للعقد في Neo4j"},
+        {"term": "Cypher", "def": "لغة استعلام Neo4j"},
+        {"term": "DynamoDB", "def": "قاعدة بيانات NoSQL من أمازون"},
+        {"term": "Firestore", "def": "قاعدة بيانات NoSQL من جوجل"},
+        {"term": "Realtime Database", "def": "قاعدة بيانات لحظية من Firebase"},
+        {"term": "Couchbase", "def": "قاعدة بيانات NoSQL متعددة النماذج"},
+        {"term": "CouchDB", "def": "قاعدة بيانات JSON مفتوحة المصدر"},
+        {"term": "Elasticsearch", "def": "محرك بحث وقاعدة بيانات"},
+        {"term": "InfluxDB", "def": "قاعدة بيانات للسلاسل الزمنية"},
+        {"term": "TimescaleDB", "def": "قاعدة بيانات زمنية مبنية على PostgreSQL"},
+        {"term": "HBase", "def": "قاعدة بيانات أعمدة في Hadoop"},
+        {"term": "Bigtable", "def": "قاعدة بيانات NoSQL من جوجل"},
+        {"term": "Spanner", "def": "قاعدة بيانات موزعة من جوجل"},
+        {"term": "Cosmos DB", "def": "قاعدة بيانات NoSQL من مايكروسوفت"},
+        {"term": "ArangoDB", "def": "قاعدة بيانات متعددة النماذج"},
+        {"term": "OrientDB", "def": "قاعدة بيانات متعددة النماذج"},
+        {"term": "Riak", "def": "قاعدة بيانات موزعة من نوع مفتاح-قيمة"},
+        {"term": "Memcached", "def": "نظام تخزين مؤقت في الذاكرة"},
+        {"term": "Aerospike", "def": "قاعدة بيانات NoSQL عالية الأداء"},
+        {"term": "Event Store", "def": "قاعدة بيانات للأحداث"},
+        {"term": "Neo4j Bloom", "def": "أداة تصور لـ Neo4j"}
+    ],
+
+    // القسم الخامس: إدارة قواعد البيانات (50 مصطلح)
+    "إدارة قواعد البيانات": [
+        {"term": "DBA", "def": "مسؤول قواعد البيانات"},
+        {"term": "Database Administrator", "def": "مسؤول قواعد البيانات"},
+        {"term": "Backup", "def": "نسخ احتياطي"},
+        {"term": "Full Backup", "def": "نسخ احتياطي كامل"},
+        {"term": "Differential Backup", "def": "نسخ احتياطي تفاضلي (التغييرات فقط)"},
+        {"term": "Incremental Backup", "def": "نسخ احتياطي تزايدي"},
+        {"term": "Transaction Log Backup", "def": "نسخ احتياطي لسجل المعاملات"},
+        {"term": "Restore", "def": "استعادة من نسخة احتياطية"},
+        {"term": "Recovery", "def": "استرداد البيانات بعد عطل"},
+        {"term": "Point-in-Time Recovery", "def": "استعادة لنقطة زمنية محددة"},
+        {"term": "Replication", "def": "نسخ متماثل للبيانات"},
+        {"term": "Master-Slave Replication", "def": "نسخ متماثل رئيسي-تابع"},
+        {"term": "Master-Master Replication", "def": "نسخ متماثل رئيسي-رئيسي"},
+        {"term": "Synchronous Replication", "def": "نسخ متماثل متزامن"},
+        {"term": "Asynchronous Replication", "def": "نسخ متماثل غير متزامن"},
+        {"term": "Clustering", "def": "تجميع الخوادم"},
+        {"term": "Failover", "def": "تحويل تلقائي عند الفشل"},
+        {"term": "High Availability", "def": "توفر عالي"},
+        {"term": "Disaster Recovery", "def": "استعادة الكوارث"},
+        {"term": "Load Balancing", "def": "موازنة الحمل"},
+        {"term": "Sharding", "def": "تقسيم البيانات عبر خوادم متعددة"},
+        {"term": "Horizontal Scaling", "def": "توسعة أفقية (إضافة خوادم)"},
+        {"term": "Vertical Scaling", "def": "توسعة رأسية (تطوير الخادم)"},
+        {"term": "Partitioning", "def": "تقسيم الجداول"},
+        {"term": "Range Partitioning", "def": "تقسيم حسب النطاق"},
+        {"term": "List Partitioning", "def": "تقسيم حسب القائمة"},
+        {"term": "Hash Partitioning", "def": "تقسيم بالتجزئة"},
+        {"term": "Performance Tuning", "def": "تحسين الأداء"},
+        {"term": "Query Optimization", "def": "تحسين الاستعلامات"},
+        {"term": "Execution Plan", "def": "خطة تنفيذ الاستعلام"},
+        {"term": "Index Tuning", "def": "تحسين الفهارس"},
+        {"term": "Database Monitoring", "def": "مراقبة قاعدة البيانات"},
+        {"term": "Performance Metrics", "def": "مقاييس الأداء"},
+        {"term": "Query Profiling", "def": "تحليل أداء الاستعلامات"},
+        {"term": "Slow Query Log", "def": "سجل الاستعلامات البطيئة"},
+        {"term": "Database Security", "def": "أمن قواعد البيانات"},
+        {"term": "Authentication", "def": "المصادقة"},
+        {"term": "Authorization", "def": "التفويض والصلاحيات"},
+        {"term": "User", "def": "مستخدم في قاعدة البيانات"},
+        {"term": "Role", "def": "دور بمجموعة صلاحيات"},
+        {"term": "Privilege", "def": "امتياز أو صلاحية"},
+        {"term": "Grant", "def": "منح صلاحية"},
+        {"term": "Revoke", "def": "سحب صلاحية"},
+        {"term": "Encryption", "def": "تشفير البيانات"},
+        {"term": "TDE", "def": "تشفير بيانات شفاف"},
+        {"term": "Audit", "def": "تدقيق"},
+        {"term": "Audit Log", "def": "سجل التدقيق"},
+        {"term": "Compliance", "def": "الامتثال للمعايير"},
+        {"term": "Data Masking", "def": "إخفاء البيانات الحساسة"},
+        {"term": "Row-Level Security", "def": "أمن على مستوى الصف"},
+        {"term": "Column-Level Security", "def": "أمن على مستوى العمود"}
+    ]
+},
+  // ---------- قاعدة بيانات الذكاء الاصطناعي (5 أقسام × 50 مصطلح = 250 مصطلح) ----------
+// استبدل قسم "الذكاء الاصطناعي" في ملفك بهذا الكود بالكامل
+
+"الذكاء الاصطناعي": {
+    // القسم الأول: أساسيات الذكاء الاصطناعي (50 مصطلح)
+    "أساسيات الذكاء الاصطناعي": [
+        {"term": "Artificial Intelligence", "def": "الذكاء الاصطناعي - محاكاة الذكاء البشري في الآلات"},
+        {"term": "Machine Learning", "def": "تعلم الآلة - قدرة الأنظمة على التعلم من البيانات"},
+        {"term": "Deep Learning", "def": "تعلم عميق - فرع من تعلم الآلة باستخدام الشبكات العصبية"},
+        {"term": "Neural Network", "def": "شبكة عصبية - نموذج حسابي مستوحى من الدماغ البشري"},
+        {"term": "Natural Language Processing", "def": "معالجة اللغة الطبيعية - تفاعل الحواسيب مع اللغة البشرية"},
+        {"term": "Computer Vision", "def": "رؤية حاسوبية - تمكين الحواسيب من فهم الصور والفيديو"},
+        {"term": "Expert System", "def": "نظام خبير - نظام يحاكي قدرة الخبير البشري على اتخاذ القرارات"},
+        {"term": "Robotics", "def": "الروبوتات - تصميم وبناء وبرمجة الروبوتات"},
+        {"term": "Cognitive Computing", "def": "الحوسبة المعرفية - محاكاة عمليات التفكير البشري"},
+        {"term": "Knowledge Representation", "def": "تمثيل المعرفة - طريقة تمثيل المعلومات في الأنظمة الذكية"},
+        {"term": "Reasoning", "def": "الاستدلال - عملية استخلاص استنتاجات منطقية"},
+        {"term": "Problem Solving", "def": "حل المشكلات - إيجاد حلول للمشكلات المعقدة"},
+        {"term": "Perception", "def": "الإدراك - فهم البيئة المحيطة عبر الحواس"},
+        {"term": "Intelligent Agent", "def": "وكيل ذكي - كيان يستشعر البيئة ويتخذ إجراءات"},
+        {"term": "Turing Test", "def": "اختبار تورينج - اختبار لقدرة الآلة على محاكاة الذكاء البشري"},
+        {"term": "Strong AI", "def": "ذكاء اصطناعي قوي - آلة تمتلك وعياً حقيقياً"},
+        {"term": "Weak AI", "def": "ذكاء اصطناعي ضعيف - آلة تحاكي الذكاء لمهمة محددة"},
+        {"term": "Superintelligence", "def": "ذكاء فائق - ذكاء يتجاوز القدرات البشرية بكثير"},
+        {"term": "Artificial General Intelligence", "def": "ذكاء اصطناعي عام - آلة تستطيع أداء أي مهمة ذهنية"},
+        {"term": "Narrow AI", "def": "ذكاء اصطناعي محدود - ذكاء متخصص في مجال واحد"},
+        {"term": "Data Mining", "def": "تنقيب البيانات - اكتشاف الأنماط في مجموعات البيانات الكبيرة"},
+        {"term": "Pattern Recognition", "def": "تعرف الأنماط - تحديد الأنماط والانتظامات في البيانات"},
+        {"term": "Feature Extraction", "def": "استخراج الميزات - تحويل البيانات الخام إلى ميزات مفيدة"},
+        {"term": "Feature Engineering", "def": "هندسة الميزات - اختيار وتعديل الميزات لتحسين الأداء"},
+        {"term": "Training Data", "def": "بيانات تدريب - البيانات المستخدمة لتدريب النماذج"},
+        {"term": "Test Data", "def": "بيانات اختبار - البيانات المستخدمة لاختبار أداء النموذج"},
+        {"term": "Validation Data", "def": "بيانات تحقق - بيانات لتقييم النموذج أثناء التدريب"},
+        {"term": "Overfitting", "def": "فرط التطابق - النموذج يتعلم التفاصيل والضوضاء في بيانات التدريب"},
+        {"term": "Underfitting", "def": "ضعف التطابق - النموذج لا يستطيع تعلم العلاقات في البيانات"},
+        {"term": "Bias", "def": "انحياز - خطأ ناتج عن افتراضات خاطئة في النموذج"},
+        {"term": "Variance", "def": "تباين - حساسية النموذج للتغيرات في بيانات التدريب"},
+        {"term": "Bias-Variance Tradeoff", "def": "مقايضة الانحياز والتباين - موازنة بين خطأ الانحياز والتباين"},
+        {"term": "Generalization", "def": "تعميم - قدرة النموذج على العمل مع بيانات غير مألوفة"},
+        {"term": "Supervised Learning", "def": "تعلم تحت الإشراف - تعلم من بيانات مصنفة"},
+        {"term": "Unsupervised Learning", "def": "تعلم غير تحت الإشراف - تعلم من بيانات غير مصنفة"},
+        {"term": "Semi-supervised Learning", "def": "تعلم شبه تحت الإشراف - تعلم من بيانات مصنفة وغير مصنفة"},
+        {"term": "Reinforcement Learning", "def": "تعلم معزز - تعلم من خلال التفاعل مع البيئة"},
+        {"term": "Self-supervised Learning", "def": "تعلم ذاتي الإشراف - إنشاء إشارات تدريب من البيانات نفسها"},
+        {"term": "Transfer Learning", "def": "تعلم نقل - استخدام معرفة من مهمة لحل مهمة أخرى"},
+        {"term": "Multi-task Learning", "def": "تعلم متعدد المهام - حل مهام متعددة في وقت واحد"},
+        {"term": "Ensemble Learning", "def": "تعلم مجموعات - دمج عدة نماذج لتحسين الأداء"},
+        {"term": "Bagging", "def": "تجميع - تدريب عدة نماذج على عينات مختلفة"},
+        {"term": "Boosting", "def": "تعزيز - تحسين النماذج الضعيفة بشكل متتابع"},
+        {"term": "Stacking", "def": "تكديس - دمج مخرجات عدة نماذج في نموذج نهائي"},
+        {"term": "Hyperparameter", "def": "معلمة فائقة - معلمة تحدد بنية أو سلوك النموذج"},
+        {"term": "Parameter", "def": "معلمة - متغيرات يتعلمها النموذج أثناء التدريب"},
+        {"term": "Model Evaluation", "def": "تقييم النموذج - قياس أداء النموذج"},
+        {"term": "Cross-validation", "def": "تحقق متقاطع - تقسيم البيانات لمجموعات تدريب وتحقق متعددة"},
+        {"term": "Confusion Matrix", "def": "مصفوفة الارتباك - جدول يوضح أداء المصنف"},
+        {"term": "Accuracy", "def": "دقة - نسبة التوقعات الصحيحة"},
+        {"term": "Precision", "def": "ضبط - دقة التوقعات الإيجابية"},
+        {"term": "Recall", "def": "استدعاء - قدرة النموذج على إيجاد جميع العينات الإيجابية"}
+    ],
+
+    // القسم الثاني: تعلم الآلة (50 مصطلح)
+    "تعلم الآلة": [
+        {"term": "Linear Regression", "def": "انحدار خطي - نموذج للتنبؤ بقيمة مستمرة"},
+        {"term": "Logistic Regression", "def": "انحدار لوجستي - نموذج للتصنيف الثنائي"},
+        {"term": "Decision Tree", "def": "شجرة قرار - نموذج يشبه الشجرة لاتخاذ القرارات"},
+        {"term": "Random Forest", "def": "غابة عشوائية - مجموعة من أشجار القرار"},
+        {"term": "Gradient Boosting", "def": "تعزيز متدرج - بناء نماذج متتالية لتصحيح الأخطاء"},
+        {"term": "XGBoost", "def": "إكس جي بوست - مكتبة متقدمة للتعزيز المتدرج"},
+        {"term": "LightGBM", "def": "لايت جي بي إم - تعزيز متدرج سريع وموفر للذاكرة"},
+        {"term": "CatBoost", "def": "كات بوست - تعزيز متدرج مع معالجة تلقائية للبيانات الفئوية"},
+        {"term": "Support Vector Machine", "def": "آلة دعم المتجهات - مصنف يبحث عن أفضل حدود للفصل"},
+        {"term": "K-Nearest Neighbors", "def": "أقرب جار - تصنيف بناءً على أقرب الجيران"},
+        {"term": "Naive Bayes", "def": "ساذج بايز - مصنف احتمالي مبني على نظرية بايز"},
+        {"term": "K-Means", "def": "كاي-متوسطات - خوارزمية تجميع غير تحت الإشراف"},
+        {"term": "Hierarchical Clustering", "def": "تجميع هرمي - بناء هرم من المجموعات"},
+        {"term": "DBSCAN", "def": "دي بي إس سي إيه إن - تجميع مكاني قائم على الكثافة"},
+        {"term": "Principal Component Analysis", "def": "تحليل المكونات الرئيسية - تقليل الأبعاد"},
+        {"term": "t-SNE", "def": "تي-إس إن إي - تقليل الأبعاد للتصور"},
+        {"term": "Linear Discriminant Analysis", "def": "تحليل تمييزي خطي - تقليل الأبعاد مع الحفاظ على التمييز"},
+        {"term": "Apriori", "def": "أبريوري - خوارزمية لاكتشاف قواعد الارتباط"},
+        {"term": "FP-Growth", "def": "إف بي-جروث - اكتشاف مجموعات العناصر المتكررة"},
+        {"term": "Eclat", "def": "إيكلات - خوارزمية اكتشاف قواعد ارتباط"},
+        {"term": "Regression", "def": "انحدار - تنبؤ بقيم مستمرة"},
+        {"term": "Classification", "def": "تصنيف - توقع فئات منفصلة"},
+        {"term": "Clustering", "def": "تجميع - تقسيم البيانات إلى مجموعات متشابهة"},
+        {"term": "Dimensionality Reduction", "def": "تقليل الأبعاد - تقليل عدد المتغيرات"},
+        {"term": "Anomaly Detection", "def": "كشف الشذوذ - تحديد النقاط غير الطبيعية"},
+        {"term": "Outlier Detection", "def": "كشف القيم المتطرفة - إيجاد القيم الشاذة"},
+        {"term": "Feature Selection", "def": "اختيار الميزات - اختيار أهم الميزات"},
+        {"term": "Feature Scaling", "def": "تحجيم الميزات - توحيد نطاق الميزات"},
+        {"term": "Normalization", "def": "تطبيع - تحجيم البيانات إلى نطاق [0,1]"},
+        {"term": "Standardization", "def": "توحيد قياسي - تحويل البيانات لمتوسط 0 وانحراف معياري 1"},
+        {"term": "Regularization", "def": "تنظيم - منع فرط التطابق بإضافة عقوبة"},
+        {"term": "L1 Regularization", "def": "تنظيم L1 - عقوبة قيمة مطلقة للمعلمات"},
+        {"term": "L2 Regularization", "def": "تنظيم L2 - عقوبة مربعة للمعلمات"},
+        {"term": "Elastic Net", "def": "شبكة مرنة - دمج تنظيم L1 و L2"},
+        {"term": "Gradient Descent", "def": "نزول متدرج - تحسين بتحديث المعلمات عكس التدرج"},
+        {"term": "Stochastic Gradient Descent", "def": "نزول متدرج عشوائي - تحديث المعلمات بكل عينة"},
+        {"term": "Mini-batch Gradient Descent", "def": "نزول متدرج بدفعات صغيرة - توازن بين العشوائي والكامل"},
+        {"term": "Learning Rate", "def": "معدل التعلم - حجم الخطوة في تحديث المعلمات"},
+        {"term": "Epoch", "def": "دورة - مرور كامل على بيانات التدريب"},
+        {"term": "Batch", "def": "دفعة - مجموعة العينات في تكرار واحد"},
+        {"term": "Iteration", "def": "تكرار - تحديث واحد للمعلمات"},
+        {"term": "Loss Function", "def": "دالة الخسارة - قياس الفرق بين التنبؤ والقيمة الحقيقية"},
+        {"term": "Cost Function", "def": "دالة التكلفة - متوسط الخسارة على مجموعة التدريب"},
+        {"term": "Objective Function", "def": "دالة الهدف - الدالة المراد تحسينها"},
+        {"term": "Mean Squared Error", "def": "متوسط مربع الخطأ - خسارة للانحدار"},
+        {"term": "Mean Absolute Error", "def": "متوسط الخطأ المطلق - خسارة للانحدار"},
+        {"term": "Cross-Entropy", "def": "إنتروبيا متقاطعة - خسارة للتصنيف"},
+        {"term": "Hinge Loss", "def": "خسارة المفصلة - خسارة لآلة دعم المتجهات"},
+        {"term": "Log Loss", "def": "خسارة لوغاريتمية - خسارة للانحدار اللوجستي"},
+        {"term": "ROC Curve", "def": "منحنى ROC - منحنى خاصية التشغيل المستقبلة"},
+        {"term": "AUC", "def": "المساحة تحت المنحنى - مقياس أداء المصنف"}
+    ],
+
+    // القسم الثالث: الشبكات العصبية (50 مصطلح)
+    "الشبكات العصبية": [
+        {"term": "Perceptron", "def": "مدرك - أبسط وحدة في الشبكة العصبية"},
+        {"term": "Multilayer Perceptron", "def": "مدرك متعدد الطبقات - شبكة بطبقات مخفية"},
+        {"term": "Input Layer", "def": "طبقة الإدخال - تستقبل البيانات الأولية"},
+        {"term": "Hidden Layer", "def": "طبقة خفية - طبقة بين الإدخال والإخراج"},
+        {"term": "Output Layer", "def": "طبقة الإخراج - تنتج النتيجة النهائية"},
+        {"term": "Neuron", "def": "عصبون - وحدة حسابية أساسية"},
+        {"term": "Weight", "def": "وزن - قوة الاتصال بين العصبونات"},
+        {"term": "Bias", "def": "انحياز - قيمة تضاف للمجموع المرجح"},
+        {"term": "Activation Function", "def": "دالة التنشيط - تحويل المجموع المرجح إلى مخرج"},
+        {"term": "Sigmoid", "def": "سغمودي - دالة تنشيط على شكل حرف S"},
+        {"term": "Tanh", "def": "ظل زائدي - دالة تنشيط بين -1 و 1"},
+        {"term": "ReLU", "def": "وحدة خطية مصححة - دالة تنشيط شائعة"},
+        {"term": "Leaky ReLU", "def": "ريلو متسربة - نسخة محسنة من ReLU"},
+        {"term": "Parametric ReLU", "def": "ريلو معلمي - ReLU بمعامل قابل للتعلم"},
+        {"term": "Exponential Linear Unit", "def": "وحدة خطية أسية - ELU"},
+        {"term": "Swish", "def": "سويش - دالة تنشيط حديثة"},
+        {"term": "Softmax", "def": "سوفتماكس - تحويل المخرجات لتوزيع احتمالي"},
+        {"term": "Forward Propagation", "def": "انتشار أمامي - حساب المخرجات من الإدخال"},
+        {"term": "Backpropagation", "def": "انتشار عكسي - حساب التدرجات لتحديث الأوزان"},
+        {"term": "Gradient", "def": "تدرج - معدل تغير الخسارة بالنسبة للأوزان"},
+        {"term": "Vanishing Gradient", "def": "تلاشي التدرج - مشكلة في الشبكات العميقة"},
+        {"term": "Exploding Gradient", "def": "انفجار التدرج - التدرجات تصبح كبيرة جداً"},
+        {"term": "Optimizer", "def": "محسن - خوارزمية تحديث الأوزان"},
+        {"term": "Stochastic Gradient Descent", "def": "نزول متدرج عشوائي - محسن أساسي"},
+        {"term": "Momentum", "def": "زخم - تسريع التقارب بتذكر التحديثات السابقة"},
+        {"term": "Nesterov Momentum", "def": "زخم نيستيروف - نسخة محسنة من الزخم"},
+        {"term": "AdaGrad", "def": "أدا جراد - محسن بتكييف معدل التعلم لكل معلمة"},
+        {"term": "RMSprop", "def": "آر إم إس بروب - محسن بمتوسط متحرك للتدرجات"},
+        {"term": "Adam", "def": "آدم - محسن يجمع بين مومنتوم و RMSprop"},
+        {"term": "AdamW", "def": "آدم دبليو - آدم مع تنظيم وزن محسّن"},
+        {"term": "Nadam", "def": "نادام - آدم مع زخم نيستيروف"},
+        {"term": "Batch Normalization", "def": "تطبيع الدفعات - تسريع التدريب وتحسين الاستقرار"},
+        {"term": "Layer Normalization", "def": "تطبيع الطبقات - تطبيع عبر الميزات في كل عينة"},
+        {"term": "Instance Normalization", "def": "تطبيع العينات - تطبيع لكل عينة على حدة"},
+        {"term": "Dropout", "def": "تسرب - تقنية لمنع فرط التطابق"},
+        {"term": "Early Stopping", "def": "إيقاف مبكر - إيقاف التدريب قبل فرط التطابق"},
+        {"term": "Weight Decay", "def": "اضمحلال الوزن - تنظيم لمنع فرط التطابق"},
+        {"term": "Initialization", "def": "تهيئة - تحديد القيم الأولية للأوزان"},
+        {"term": "Xavier Initialization", "def": "تهيئة كزافييه - تهيئة ألأوزان للحفاظ على التباين"},
+        {"term": "He Initialization", "def": "تهيئة هي - تهيئة مناسبة لـ ReLU"},
+        {"term": "Hyperparameter Tuning", "def": "ضبط المعلمات الفائقة - تحسين أداء النموذج"},
+        {"term": "Grid Search", "def": "بحث شبكي - تجربة جميع تركيبات المعلمات"},
+        {"term": "Random Search", "def": "بحث عشوائي - تجربة تركيبات عشوائية من المعلمات"},
+        {"term": "Bayesian Optimization", "def": "تحسين بايزي - تحسين فعال للمعلمات الفائقة"},
+        {"term": "Activation Map", "def": "خريطة التنشيط - مخرجات طبقة التفاف"},
+        {"term": "Receptive Field", "def": "حقل استقبالي - منطقة الإدخال التي تؤثر على عصبون"},
+        {"term": "Stride", "def": "خطوة - مقدار حركة المرشح في الالتفاف"},
+        {"term": "Padding", "def": "حشوة - إضافة حدود للصورة للحفاظ على الحجم"},
+        {"term": "Valid Padding", "def": "حشوة صالحة - بدون حشوة"},
+        {"term": "Same Padding", "def": "حشوة متساوية - حشوة تحافظ على حجم الإخراج"}
+    ],
+
+    // القسم الرابع: التعلم العميق (50 مصطلح)
+    "التعلم العميق": [
+        {"term": "Convolutional Neural Network", "def": "شبكة عصبية التفافية - CNN للصور"},
+        {"term": "Recurrent Neural Network", "def": "شبكة عصبية متكررة - RNN للبيانات المتسلسلة"},
+        {"term": "Long Short-Term Memory", "def": "ذاكرة طويلة قصيرة المدى - LSTM"},
+        {"term": "Gated Recurrent Unit", "def": "وحدة متكررة مبوبة - GRU"},
+        {"term": "Bidirectional RNN", "def": "RNN ثنائية الاتجاه - معالجة من الاتجاهين"},
+        {"term": "Autoencoder", "def": "مشفر ذاتي - ضغط وإعادة بناء البيانات"},
+        {"term": "Variational Autoencoder", "def": "مشفر ذاتي متغير - VAE لتوليد البيانات"},
+        {"term": "Generative Adversarial Network", "def": "شبكة خصومية توليدية - GAN"},
+        {"term": "Transformer", "def": "محول - نموذج للتعلم العميق يعتمد على الانتباه"},
+        {"term": "Attention Mechanism", "def": "آلية الانتباه - التركيز على الأجزاء المهمة"},
+        {"term": "Self-Attention", "def": "انتباه ذاتي - علاقة بين عناصر التسلسل نفسه"},
+        {"term": "Multi-Head Attention", "def": "انتباه متعدد الرؤوس - عدة آليات انتباه متوازية"},
+        {"term": "Positional Encoding", "def": "ترميز موضعي - إضافة معلومات الموقع للتسلسل"},
+        {"term": "BERT", "def": "بيرت - تمثيلات المشفر ثنائية الاتجاه من Google"},
+        {"term": "GPT", "def": "جي بي تي - محول توليدي مدرب مسبقاً من OpenAI"},
+        {"term": "GPT-3", "def": "GPT-3 - نموذج لغوي ضخم من OpenAI"},
+        {"term": "GPT-4", "def": "GPT-4 - أحدث إصدار من نماذج GPT"},
+        {"term": "T5", "def": "T5 - محول نقل النص إلى نص من Google"},
+        {"term": "BART", "def": "بارت - نموذج تشفير-فك تشفير لتوليد النص"},
+        {"term": "RoBERTa", "def": "روبيرتا - نسخة محسنة من BERT من Facebook"},
+        {"term": "XLNet", "def": "إكس إل نت - نموذج لغوي يعتمد على التباديل"},
+        {"term": "ELECTRA", "def": "إلكترا - نموذج تعلم ذاتي الإشراف"},
+        {"term": "ALBERT", "def": "ألبرت - BERT خفيف الوزن"},
+        {"term": "DistilBERT", "def": "دستيلبيرت - نسخة مصغرة وسريعة من BERT"},
+        {"term": "ResNet", "def": "ريزنت - شبكة متبقية للتعلم العميق"},
+        {"term": "Residual Connection", "def": "اتصال متبقي - تخطي الطبقات لتجنب تلاشي التدرج"},
+        {"term": "DenseNet", "def": "دينس نت - شبكة كثيفة الاتصالات"},
+        {"term": "Inception", "def": "إنسبشن - شبكة متعددة الأبعاد من Google"},
+        {"term": "MobileNet", "def": "موبايل نت - شبكة خفيفة للأجهزة المحمولة"},
+        {"term": "EfficientNet", "def": "إفشنت نت - شبكة محسنة من Google"},
+        {"term": "VGG", "def": "في جي جي - شبكة بسيطة وعميقة"},
+        {"term": "AlexNet", "def": "أليكس نت - شبكة رائدة في التعلم العميق"},
+        {"term": "YOLO", "def": "يولو - كشف الأجسام في الوقت الحقيقي"},
+        {"term": "SSD", "def": "إس إس دي - كاشف متعدد اللقطات"},
+        {"term": "R-CNN", "def": "آر-سي إن إن - شبكة CNN قائمة على المناطق"},
+        {"term": "Fast R-CNN", "def": "فاست R-CNN - نسخة أسرع من R-CNN"},
+        {"term": "Faster R-CNN", "def": "فاستر R-CNN - نسخة أسرع مع شبكة اقتراح المناطق"},
+        {"term": "Mask R-CNN", "def": "ماسك R-CNN - تجزئة الكيانات"},
+        {"term": "U-Net", "def": "يو-نت - شبكة لتجزئة الصور الطبية"},
+        {"term": "SegNet", "def": "سيج نت - شبكة للتجزئة الدلالية"},
+        {"term": "DeepLab", "def": "ديب لاب - شبكة للتجزئة الدلالية من Google"},
+        {"term": "WaveNet", "def": "ويڤ نت - نموذج لتوليد الصوت من DeepMind"},
+        {"term": "Tacotron", "def": "تاكوترون - نموذج تحويل النص إلى كلام من Google"},
+        {"term": "WaveGlow", "def": "ويڤ جلو - نموذج توليد صوت من NVIDIA"},
+        {"term": "StyleGAN", "def": "ستايل جان - توليد صور عالية الجودة من NVIDIA"},
+        {"term": "BigGAN", "def": "بيج جان - GAN كبير الحجم"},
+        {"term": "CycleGAN", "def": "سايكل جان - تحويل الصور دون بيانات مقترنة"},
+        {"term": "pix2pix", "def": "بيكس تو بيكس - ترجمة صورة إلى صورة"},
+        {"term": "DALL-E", "def": "دال-إي - توليد صور من النص من OpenAI"},
+        {"term": "CLIP", "def": "كليب - نموذج ربط الصور والنص من OpenAI"},
+        {"term": "Stable Diffusion", "def": "ستيبل ديفيوجن - نموذج توليد صور مفتوح المصدر"}
+    ],
+
+    // القسم الخامس: معالجة اللغة الطبيعية ورؤية الكمبيوتر (50 مصطلح)
+    "معالجة اللغة ورؤية الكمبيوتر": [
+        {"term": "Tokenization", "def": "تقطيع - تقسيم النص إلى وحدات صغيرة"},
+        {"term": "Token", "def": "رمز - وحدة أساسية في النص"},
+        {"term": "Word Embedding", "def": "تضمين الكلمات - تمثيل الكلمات كمتجهات"},
+        {"term": "Word2Vec", "def": "وورد تو فيك - نموذج تضمين كلمات من Google"},
+        {"term": "GloVe", "def": "جلوف - متجهات عالمية لتمثيل الكلمات"},
+        {"term": "FastText", "def": "فاست تكست - تضمين كلمات من Facebook"},
+        {"term": "ELMo", "def": "إلمو - تضمين كلمات حسب السياق"},
+        {"term": "Bag of Words", "def": "كيس الكلمات - تمثيل النص بتكرار الكلمات"},
+        {"term": "TF-IDF", "def": "TF-IDF - قياس أهمية الكلمة في المستند"},
+        {"term": "N-gram", "def": "إن-جرام - تسلسل متتالي من العناصر"},
+        {"term": "Stemming", "def": "اشتقاق - اختزال الكلمات لجذورها"},
+        {"term": "Lemmatization", "def": "تأصيل - تحويل الكلمة لشكلها الأساسي"},
+        {"term": "Stop Words", "def": "كلمات توقف - كلمات شائعة يتم تجاهلها"},
+        {"term": "Part-of-Speech Tagging", "def": "توسيم أجزاء الكلام - تحديد نوع الكلمة"},
+        {"term": "Named Entity Recognition", "def": "تعرف الكيانات المسماة - تحديد الأسماء والأماكن"},
+        {"term": "Dependency Parsing", "def": "تحليل التبعية - العلاقات النحوية"},
+        {"term": "Constituency Parsing", "def": "تحليل المكونات - بنية الجملة"},
+        {"term": "Sentiment Analysis", "def": "تحليل المشاعر - تحديد العاطفة في النص"},
+        {"term": "Topic Modeling", "def": "نمذجة المواضيع - استخراج المواضيع الرئيسية"},
+        {"term": "Latent Dirichlet Allocation", "def": "تخصيص ديريشليت الكامن - LDA"},
+        {"term": "Text Classification", "def": "تصنيف النص - تسمية النص بفئات"},
+        {"term": "Machine Translation", "def": "ترجمة آلية - ترجمة بين اللغات"},
+        {"term": "Text Summarization", "def": "تلخيص النص - إنشاء ملخص للنص"},
+        {"term": "Question Answering", "def": "الإجابة على الأسئلة - استخراج إجابات"},
+        {"term": "Text Generation", "def": "توليد النص - إنشاء نص جديد"},
+        {"term": "Language Model", "def": "نموذج لغوي - توزيع احتمالي على تسلسلات الكلمات"},
+        {"term": "Perplexity", "def": "حيرة - قياس جودة النموذج اللغوي"},
+        {"term": "BLEU Score", "def": "درجة BLEU - تقييم الترجمة الآلية"},
+        {"term": "ROUGE Score", "def": "درجة ROUGE - تقييم التلخيص"},
+        {"term": "METEOR", "def": "ميتيور - تقييم الترجمة الآلية"},
+        {"term": "Image Classification", "def": "تصنيف الصور - تحديد محتوى الصورة"},
+        {"term": "Object Detection", "def": "كشف الأجسام - تحديد موقع الأجسام في الصورة"},
+        {"term": "Object Recognition", "def": "تعرف الأجسام - تحديد نوع الجسم في الصورة"},
+        {"term": "Object Tracking", "def": "تتبع الأجسام - تتبع حركة الجسم عبر الفيديو"},
+        {"term": "Image Segmentation", "def": "تقسيم الصور - تجزئة الصورة إلى أجزاء"},
+        {"term": "Semantic Segmentation", "def": "تقسيم دلالي - تصنيف كل بكسل"},
+        {"term": "Instance Segmentation", "def": "تقسيم الكيانات - تمييز الكيانات الفردية"},
+        {"term": "Panoptic Segmentation", "def": "تقسيم شامل - دمج الدلالي والكيانات"},
+        {"term": "Face Detection", "def": "كشف الوجوه - تحديد موقع الوجوه"},
+        {"term": "Face Recognition", "def": "تعرف الوجوه - تحديد هوية الشخص"},
+        {"term": "Facial Landmark Detection", "def": "كشف معالم الوجه - نقاط الوجه الرئيسية"},
+        {"term": "Emotion Recognition", "def": "تعرف المشاعر - تحديد المشاعر من الوجه"},
+        {"term": "Age Estimation", "def": "تقدير العمر - تخمين العمر من الصورة"},
+        {"term": "Gender Recognition", "def": "تعرف الجنس - تحديد الجنس"},
+        {"term": "Pose Estimation", "def": "تقدير الوضعية - تحديد وضعية الجسم"},
+        {"term": "Action Recognition", "def": "تعرف الحركات - تحديد الأنشطة في الفيديو"},
+        {"term": "Gesture Recognition", "def": "تعرف الإيماءات - التعرف على حركات اليد"},
+        {"term": "Optical Character Recognition", "def": "تعرف الحروف الضوئية - استخراج النص من الصور"},
+        {"term": "Scene Understanding", "def": "فهم المشهد - تحليل كامل للصورة"},
+        {"term": "Image Generation", "def": "توليد الصور - إنشاء صور جديدة"},
+        {"term": "Image-to-Image Translation", "def": "ترجمة صورة لصورة - تحويل نمط الصورة"},
+        {"term": "Super-Resolution", "def": "تحسين الدقة - زيادة دقة الصورة"}
+    ]
+},
+   // ---------- قاعدة بيانات أمن المعلومات (5 أقسام × 50 مصطلح = 250 مصطلح) ----------
+// ضع هذا الكود مكان قسم "أمن المعلومات" في ملفك
+
+"أمن المعلومات": {
+    // القسم الأول: أساسيات أمن المعلومات (50 مصطلح)
+    "أساسيات أمن المعلومات": [
+        {"term": "Cybersecurity", "def": "أمن المعلومات: حماية الأنظمة والشبكات والبيانات من الهجمات الرقمية"},
+        {"term": "CIA Triad", "def": "ثالوث أمن المعلومات: السرية والسلامة والتوفر"},
+        {"term": "Confidentiality", "def": "السرية: ضمان أن البيانات لا يمكن الوصول إليها إلا من قبل المصرح لهم"},
+        {"term": "Integrity", "def": "السلامة: ضمان عدم تعديل البيانات بشكل غير مصرح به"},
+        {"term": "Availability", "def": "التوفر: ضمان أن الأنظمة والبيانات متاحة عند الحاجة"},
+        {"term": "Authentication", "def": "المصادقة: التحقق من هوية المستخدم"},
+        {"term": "Authorization", "def": "التفويض: تحديد صلاحيات المستخدم بعد المصادقة"},
+        {"term": "Accounting", "def": "المحاسبة: تتبع أنشطة المستخدمين في النظام"},
+        {"term": "AAA", "def": "نظام المصادقة والتفويض والمحاسبة معاً"},
+        {"term": "Non-Repudiation", "def": "عدم الإنكار: منع المستخدم من إنكار قيامه بإجراء معين"},
+        {"term": "Privacy", "def": "الخصوصية: حماية المعلومات الشخصية للمستخدمين"},
+        {"term": "Risk", "def": "المخاطرة: احتمال حدوث ضرر أو خسارة"},
+        {"term": "Threat", "def": "التهديد: أي شيء يمكن أن يستغل ثغرة ويسبب ضرراً"},
+        {"term": "Vulnerability", "def": "الثغرة: نقطة ضعف في النظام يمكن استغلالها"},
+        {"term": "Exploit", "def": "استغلال الثغرة: استخدام ثغرة لاختراق النظام"},
+        {"term": "Attack", "def": "الهجوم: محاولة متعمدة لخرق أمن النظام"},
+        {"term": "Asset", "def": "الأصل: أي شيء له قيمة للمنظمة ويجب حمايته"},
+        {"term": "Control", "def": "التحكم: إجراء أو آلية لتقليل المخاطر"},
+        {"term": "Countermeasure", "def": "الإجراء المضاد: خطوة لمواجهة تهديد معين"},
+        {"term": "Security Policy", "def": "السياسة الأمنية: مجموعة قواعد وإجراءات لحماية الأصول"},
+        {"term": "Security Standard", "def": "المعيار الأمني: مجموعة من المتطلبات والإرشادات"},
+        {"term": "Compliance", "def": "الامتثال: الالتزام بالقوانين والمعايير الأمنية"},
+        {"term": "Audit", "def": "التدقيق: فحص وتقييم النظام الأمني"},
+        {"term": "Penetration Testing", "def": "اختبار الاختراق: محاكاة هجوم حقيقي لاختبار الأمن"},
+        {"term": "Red Team", "def": "الفريق الأحمر: فريق الهجوم في اختبارات الاختراق"},
+        {"term": "Blue Team", "def": "الفريق الأزرق: فريق الدفاع في اختبارات الاختراق"},
+        {"term": "Purple Team", "def": "الفريق الأرجواني: تنسيق بين الفريقين الأحمر والأزرق"},
+        {"term": "Zero Day", "def": "ثغرة اليوم صفر: ثغرة غير معروفة للبائعين أو الجمهور"},
+        {"term": "Defense in Depth", "def": "الدفاع المتعمق: استخدام طبقات متعددة من الدفاع"},
+        {"term": "Security Posture", "def": "الوضع الأمني: مستوى الأمن العام للمنظمة"},
+        {"term": "Attack Surface", "def": "سطح الهجوم: مجموع النقاط التي يمكن استغلالها"},
+        {"term": "Security Awareness", "def": "الوعي الأمني: معرفة الموظفين بمخاطر الأمن"},
+        {"term": "Social Engineering", "def": "الهندسة الاجتماعية: التلاعب بالبشر لاختراق الأنظمة"},
+        {"term": "Phishing", "def": "التصيد الاحتيالي: خداع المستخدمين للحصول على معلوماتهم"},
+        {"term": "Spear Phishing", "def": "التصيد الموجه: هجوم مخصص ضد شخص أو منظمة معينة"},
+        {"term": "Whaling", "def": "صيد الحيتان: تصيد ضد كبار المسؤولين التنفيذيين"},
+        {"term": "Vishing", "def": "التصيد الصوتي: احتيال عبر المكالمات الهاتفية"},
+        {"term": "Smishing", "def": "التصيد عبر الرسائل النصية: احتيال عبر SMS"},
+        {"term": "Security Incident", "def": "حادث أمني: أي حدث يهدد أمن المعلومات"},
+        {"term": "Data Breach", "def": "خرق البيانات: تسرب أو وصول غير مصرح به للبيانات"},
+        {"term": "Security Breach", "def": "اختراق أمني: تجاوز الإجراءات الأمنية بنجاح"},
+        {"term": "Risk Assessment", "def": "تقييم المخاطر: تحديد وتحليل المخاطر الأمنية"},
+        {"term": "Risk Management", "def": "إدارة المخاطر: عملية تحديد ومعالجة المخاطر"},
+        {"term": "Risk Mitigation", "def": "تخفيف المخاطر: تقليل تأثير أو احتمال المخاطر"},
+        {"term": "Risk Acceptance", "def": "قبول المخاطر: الموافقة على تحمل مستوى معين من المخاطر"},
+        {"term": "Risk Transfer", "def": "نقل المخاطر: تحويل المخاطر لطرف آخر (مثل التأمين)"},
+        {"term": "Business Continuity", "def": "استمرارية الأعمال: قدرة المنظمة على الاستمرار بعد الكوارث"},
+        {"term": "Disaster Recovery", "def": "استعادة الكوارث: خطة لاستعادة الأنظمة بعد الكوارث"},
+        {"term": "BCP", "def": "خطة استمرارية الأعمال: خطة شاملة للتعامل مع الكوارث"},
+        {"term": "DRP", "def": "خطة استعادة الكوارث: خطة لاستعادة تكنولوجيا المعلومات"}
+    ],
+
+    // القسم الثاني: التشفير (50 مصطلح)
+    "التشفير": [
+        {"term": "Cryptography", "def": "التشفير: علم إخفاء المعلومات وتأمين الاتصالات"},
+        {"term": "Encryption", "def": "التشفير: تحويل البيانات إلى صيغة غير مفهومة"},
+        {"term": "Decryption", "def": "فك التشفير: تحويل البيانات المشفرة إلى صيغتها الأصلية"},
+        {"term": "Cipher", "def": "الشيفرة: خوارزمية للتشفير أو فك التشفير"},
+        {"term": "Plaintext", "def": "النص الواضح: البيانات الأصلية قبل التشفير"},
+        {"term": "Ciphertext", "def": "النص المشفر: البيانات بعد تطبيق التشفير عليها"},
+        {"term": "Key", "def": "المفتاح: قيمة سرية تستخدم في التشفير وفك التشفير"},
+        {"term": "Symmetric Encryption", "def": "التشفير المتماثل: استخدام مفتاح واحد للتشفير وفك التشفير"},
+        {"term": "Asymmetric Encryption", "def": "التشفير غير المتماثل: استخدام مفتاحين (عام وخاص)"},
+        {"term": "Public Key", "def": "المفتاح العام: مفتاح يمكن توزيعه علناً للتشفير"},
+        {"term": "Private Key", "def": "المفتاح الخاص: مفتاح سري لفك التشفير"},
+        {"term": "Key Exchange", "def": "تبادل المفاتيح: طريقة آمنة لتبادل المفاتيح بين الأطراف"},
+        {"term": "Diffie-Hellman", "def": "ديفي-هيلمان: بروتوكول لتبادل المفاتيح بشكل آمن"},
+        {"term": "RSA", "def": "RSA: خوارزمية تشفير غير متماثل شهيرة"},
+        {"term": "AES", "def": "معيار التشفير المتقدم: خوارزمية تشفير متماثل قوية"},
+        {"term": "DES", "def": "معيار تشفير البيانات: خوارزمية تشفير قديمة"},
+        {"term": "3DES", "def": "ثلاثي DES: تطبيق DES ثلاث مرات لزيادة الأمان"},
+        {"term": "Blowfish", "def": "بلوفش: خوارزمية تشفير متماثل سريعة"},
+        {"term": "Twofish", "def": "توفيش: خوارزمية تشفير متقدمة من بلوفش"},
+        {"term": "RC4", "def": "RC4: خوارزمية تشفير تدفق قديمة"},
+        {"term": "ChaCha20", "def": "تشاتشا20: خوارزمية تشفير تدفق حديثة"},
+        {"term": "Hash Function", "def": "دالة التجزئة: تحويل البيانات إلى قيمة ثابتة الطول"},
+        {"term": "MD5", "def": "MD5: خوارزمية تجزئة قديمة (غير آمنة حالياً)"},
+        {"term": "SHA-1", "def": "SHA-1: خوارزمية تجزئة (غير آمنة حالياً)"},
+        {"term": "SHA-256", "def": "SHA-256: خوارزمية تجزئة آمنة من عائلة SHA-2"},
+        {"term": "SHA-3", "def": "SHA-3: أحدث معيار لتجزئة البيانات"},
+        {"term": "Digital Signature", "def": "التوقيع الرقمي: تأكيد هوية المرسل وسلامة البيانات"},
+        {"term": "HMAC", "def": "رمز مصادقة الرسالة بالتجزئة: تأكيد سلامة البيانات باستخدام مفتاح"},
+        {"term": "Certificate", "def": "الشهادة الرقمية: وثيقة إلكترونية تثبت هوية جهة معينة"},
+        {"term": "PKI", "def": "البنية التحتية للمفاتيح العامة: نظام لإدارة الشهادات الرقمية"},
+        {"term": "CA", "def": "سلطة التصديق: جهة موثوقة تصدر الشهادات الرقمية"},
+        {"term": "RA", "def": "سلطة التسجيل: جهة تتحقق من هوية مقدمي طلبات الشهادات"},
+        {"term": "CRL", "def": "قائمة إبطال الشهادات: قائمة بالشهادات الملغاة"},
+        {"term": "OCSP", "def": "بروتوكول التحقق من حالة الشهادة: للتحقق من صلاحية الشهادة"},
+        {"term": "X.509", "def": "X.509: معيار تنسيق الشهادات الرقمية"},
+        {"term": "PGP", "def": "الخصوصية الجيدة: برنامج لتشفير وتوقيع البريد الإلكتروني"},
+        {"term": "GPG", "def": "GNU الخصوصية: تطبيق مفتوح المصدر لمعيار PGP"},
+        {"term": "SSL", "def": "طبقة المقابس الآمنة: بروتوكول قديم لتأمين الاتصالات"},
+        {"term": "TLS", "def": "أمن طبقة النقل: بروتوكول حديث لتأمين الاتصالات"},
+        {"term": "HTTPS", "def": "HTTP الآمن: استخدام TLS مع بروتوكول HTTP"},
+        {"term": "SSH", "def": "الغلاف الآمن: بروتوكول للاتصال الآمن عن بعد"},
+        {"term": "IPsec", "def": "أمن بروتوكول الإنترنت: مجموعة بروتوكولات لتأمين اتصالات IP"},
+        {"term": "VPN", "def": "الشبكة الخاصة الافتراضية: اتصال آمن عبر شبكة عامة"},
+        {"term": "WireGuard", "def": "واير جارد: بروتوكول VPN حديث وبسيط"},
+        {"term": "OpenVPN", "def": "أوبن في بي إن: بروتوكول VPN مفتوح المصدر"},
+        {"term": "Key Management", "def": "إدارة المفاتيح: عملية إنشاء وتوزيع وتخزين المفاتيح"},
+        {"term": "HSM", "def": "وحدة أمن عتادية: جهاز مادي لحماية المفاتيح"},
+        {"term": "TPM", "def": "وحدة النظام الأساسي الموثوق: شريحة لتخزين المفاتيح في الأجهزة"},
+        {"term": "KMS", "def": "خدمة إدارة المفاتيح: خدمة سحابية لإدارة المفاتيح"},
+        {"term": "Quantum Cryptography", "def": "التشفير الكمومي: استخدام ميكانيكا الكم للتشفير"}
+    ],
+
+    // القسم الثالث: البرمجيات الخبيثة (50 مصطلح)
+    "البرمجيات الخبيثة": [
+        {"term": "Malware", "def": "برمجيات خبيثة: أي برنامج مصمم لإلحاق الضرر بالكمبيوتر"},
+        {"term": "Virus", "def": "فيروس: برنامج خبيث ينتشر بإرفاق نفسه ببرامج أخرى"},
+        {"term": "Worm", "def": "دودة: برنامج خبيث ينتشر عبر الشبكات ذاتياً"},
+        {"term": "Trojan", "def": "حصان طروادة: برنامج يخفي برمجيات خبيثة داخله"},
+        {"term": "Ransomware", "def": "برمجية فدية: تشفر البيانات وتطلب فدية لفك التشفير"},
+        {"term": "Spyware", "def": "برمجية تجسس: تراقب نشاط المستخدم وتجمع المعلومات"},
+        {"term": "Adware", "def": "برمجية إعلانات: تعرض إعلانات غير مرغوب فيها"},
+        {"term": "Keylogger", "def": "مسجل ضغطات المفاتيح: يسجل كل ما يكتبه المستخدم"},
+        {"term": "Rootkit", "def": "مجموعة أدوات خفية: تخفي وجود البرمجيات الخبيثة"},
+        {"term": "Bootkit", "def": "مجموعة أدوات تشغيل: تصيب قطاع الإقلاع في النظام"},
+        {"term": "Backdoor", "def": "باب خلفي: يسمح بالوصول غير المصرح به للنظام"},
+        {"term": "Botnet", "def": "شبكة روبوتات: مجموعة أجهزة مصابة يتم التحكم بها عن بعد"},
+        {"term": "Zombie", "def": "جهاز زومبي: جهاز مصاب تحت سيطرة المهاجم"},
+        {"term": "Logic Bomb", "def": "قنبلة منطقية: برنامج خبيث ينشط عند تحقق شرط معين"},
+        {"term": "Time Bomb", "def": "قنبلة زمنية: برنامج خبيث ينشط في تاريخ محدد"},
+        {"term": "Fileless Malware", "def": "برمجية خبيثة بدون ملفات: تعمل في الذاكرة دون ترك ملفات"},
+        {"term": "Polymorphic Malware", "def": "برمجية خبيثة متعددة الأشكال: تغير شيفرتها لتجنب الكشف"},
+        {"term": "Metamorphic Malware", "def": "برمجية خبيثة متحولة: تعيد كتابة نفسها بالكامل"},
+        {"term": "Macro Virus", "def": "فيروس ماكرو: يصيب ملفات وورد وإكسل"},
+        {"term": "Boot Sector Virus", "def": "فيروس قطاع الإقلاع: يصيب قطاع الإقلاع في القرص"},
+        {"term": "Script Virus", "def": "فيروس سكريبت: يكتب بلغة سكريبت وينتشر عبر الملفات"},
+        {"term": "Resident Virus", "def": "فيروس مقيم: يبقى في الذاكرة بعد تنفيذه"},
+        {"term": "Non-Resident Virus", "def": "فيروس غير مقيم: ينشط ثم يغلق"},
+        {"term": "Stealth Virus", "def": "فيروس متخفي: يخفي نفسه من برامج مكافحة الفيروسات"},
+        {"term": "Armored Virus", "def": "فيروس مدرع: يصعب تحليله وفهمه"},
+        {"term": "Cavity Virus", "def": "فيروس التجويف: يختبئ في المساحات الفارغة بالملفات"},
+        {"term": "Sparse Infector", "def": "مصاب متفرق: يصيب الملفات بشكل متقطع"},
+        {"term": "Companion Virus", "def": "فيروس رفيق: ينشئ ملفاً مصاحباً للملف الأصلي"},
+        {"term": "FAT Virus", "def": "فيروس جدول توزيع الملفات: يصيب نظام الملفات"},
+        {"term": "Multipartite Virus", "def": "فيروس متعدد الأجزاء: يصيب قطاع الإقلاع والملفات معاً"},
+        {"term": "Web Scripting Virus", "def": "فيروس ويب سكريبت: يصيب مواقع الويب"},
+        {"term": "Email Virus", "def": "فيروس بريد إلكتروني: ينتشر عبر البريد الإلكتروني"},
+        {"term": "IM Virus", "def": "فيروس التراسل الفوري: ينتشر عبر تطبيقات المحادثة"},
+        {"term": "Mobile Malware", "def": "برمجيات خبيثة للجوال: تستهدف أجهزة الهواتف"},
+        {"term": "Banking Trojan", "def": "حصان طروادة مصرفي: يسرق بيانات البنوك"},
+        {"term": "Infostealer", "def": "سارق المعلومات: يسرق المعلومات الشخصية"},
+        {"term": "Password Stealer", "def": "سارق كلمات المرور: يسرق كلمات المرور المحفوظة"},
+        {"term": "Form Grabber", "def": "لاقط النماذج: يلتقط البيانات المدخلة في نماذج الويب"},
+        {"term": "Browser Hijacker", "def": "مختطف المتصفح: يغير إعدادات المتصفح"},
+        {"term": "Search Hijacker", "def": "مختطف البحث: يغير محرك البحث الافتراضي"},
+        {"term": "DNS Changer", "def": "مغير DNS: يغير إعدادات DNS لجهاز الضحية"},
+        {"term": "Rogue Software", "def": "برنامج مزيف: يدعي أنه أداة أمنية وهو خبيث"},
+        {"term": "Scareware", "def": "برنامج تخويف: يخيف المستخدم لشراء برنامج مزيف"},
+        {"term": "Fake AV", "def": "مضاد فيروسات مزيف: برنامج أمني وهمي"},
+        {"term": "Crypto Miner", "def": "معدن العملات الرقمية: يستخدم موارد الجهاز لتعدين العملات"},
+        {"term": "Wiper", "def": "ممسحة: يمسح البيانات بشكل نهائي"},
+        {"term": "Dropper", "def": "محمل: يقوم بتثبيت برمجيات خبيثة أخرى"},
+        {"term": "Downloader", "def": "منزل: يقوم بتحميل برمجيات خبيثة أخرى"},
+        {"term": "Loader", "def": "محمل: يقوم بتحميل برمجيات خبيثة في الذاكرة"},
+        {"term": "Payload", "def": "الحمولة: الجزء الفعال من البرمجية الخبيثة"}
+    ],
+
+    // القسم الرابع: الهجمات السيبرانية (50 مصطلح)
+    "الهجمات السيبرانية": [
+        {"term": "Cyber Attack", "def": "هجوم سيبراني: محاولة متعمدة لاختراق أنظمة المعلومات"},
+        {"term": "DDoS", "def": "هجوم حجب الخدمة الموزع: إغراق الخادم بطلبات كثيرة"},
+        {"term": "DoS", "def": "هجوم حجب الخدمة: تعطيل الخدمة عن مستخدميها الشرعيين"},
+        {"term": "SYN Flood", "def": "فيضان SYN: إرسال طلبات اتصال كثيرة دون إكمالها"},
+        {"term": "UDP Flood", "def": "فيضان UDP: إرسال حزم UDP كثيرة لمنافذ عشوائية"},
+        {"term": "ICMP Flood", "def": "فيضان ICMP: إرسال حزم Ping كثيرة"},
+        {"term": "HTTP Flood", "def": "فيضان HTTP: إرسال طلبات HTTP كثيرة للخادم"},
+        {"term": "Ping of Death", "def": "بينج الموت: إرسال حزمة Ping أكبر من المسموح"},
+        {"term": "Smurf Attack", "def": "هجوم سمورف: استغلال البث للهجوم على الضحية"},
+        {"term": "Fraggle Attack", "def": "هجوم فراجل: مشابه لسمورف لكن باستخدام UDP"},
+        {"term": "Man in the Middle", "def": "رجل في المنتصف: اعتراض وتغيير الاتصال بين طرفين"},
+        {"term": "Man in the Browser", "def": "رجل في المتصفح: هجوم عبر تعليمات برمجية خبيثة في المتصفح"},
+        {"term": "Replay Attack", "def": "هجوم إعادة التشغيل: إعادة إرسال بيانات تم اعتراضها"},
+        {"term": "Session Hijacking", "def": "اختطاف الجلسة: سرقة معرف الجلسة للمستخدم"},
+        {"term": "Session Fixation", "def": "تثبيت الجلسة: إجبار المستخدم على استخدام معرف جلسة محدد"},
+        {"term": "Spoofing", "def": "انتحال: تزييف الهوية أو العنوان"},
+        {"term": "IP Spoofing", "def": "انتحال IP: تزييف عنوان IP المصدر"},
+        {"term": "ARP Spoofing", "def": "انتحال ARP: إرسال رسائل ARP مزيفة للشبكة"},
+        {"term": "DNS Spoofing", "def": "انتحال DNS: توجيه المستخدمين لمواقع مزيفة"},
+        {"term": "Email Spoofing", "def": "انتحال البريد الإلكتروني: تزييف عنوان المرسل في البريد"},
+        {"term": "Watering Hole", "def": "حفرة الري: اختراق موقع يزوره الهدف"},
+        {"term": "Drive-by Download", "def": "تنزيل أثناء التصفح: تحميل برمجيات خبيثة دون علم المستخدم"},
+        {"term": "Cross-Site Scripting", "def": "XSS: حقن سكريبت في صفحات الويب"},
+        {"term": "Stored XSS", "def": "XSS مخزن: تخزين السكريبت الخبيث في قاعدة البيانات"},
+        {"term": "Reflected XSS", "def": "XSS منعكس: تنفيذ السكريبت عبر رابط مخصص"},
+        {"term": "DOM-based XSS", "def": "XSS قائم على DOM: استغلال كائن DOM في المتصفح"},
+        {"term": "SQL Injection", "def": "حقن SQL: إدخال أوامر SQL في مدخلات التطبيق"},
+        {"term": "Blind SQL Injection", "def": "حقن SQL أعمى: استخراج البيانات عبر أسئلة صحيحة/خاطئة"},
+        {"term": "Command Injection", "def": "حقن أوامر: تنفيذ أوامر نظام التشغيل"},
+        {"term": "LDAP Injection", "def": "حقن LDAP: التلاعب باستعلامات LDAP"},
+        {"term": "XML Injection", "def": "حقن XML: حقن محتوى XML خبيث"},
+        {"term": "XXE", "def": "كيان خارجي XML: استغلال محلل XML لقراءة الملفات"},
+        {"term": "CSRF", "def": "تزييف طلب عبر المواقع: إجبار المستخدم على تنفيذ إجراءات"},
+        {"term": "SSRF", "def": "تزييف طلب من الخادم: إجبار الخادم على إرسال طلبات"},
+        {"term": "File Inclusion", "def": "تضمين ملفات: تضمين ملفات محلية أو بعيدة"},
+        {"term": "LFI", "def": "تضمين ملف محلي: قراءة ملفات محلية على الخادم"},
+        {"term": "RFI", "def": "تضمين ملف عن بعد: تضمين ملف من خادم خارجي"},
+        {"term": "Directory Traversal", "def": "اجتياز الدلائل: الوصول لملفات خارج المجلد المسموح"},
+        {"term": "Path Traversal", "def": "اجتياز المسار: استغلال المسارات للوصول لملفات غير مصرح بها"},
+        {"term": "Brute Force Attack", "def": "هجوم القوة العمياء: تجربة جميع الاحتمالات"},
+        {"term": "Dictionary Attack", "def": "هجوم القاموس: استخدام كلمات شائعة لكسر كلمات المرور"},
+        {"term": "Credential Stuffing", "def": "حشو بيانات الاعتماد: استخدام بيانات مسربة من مواقع أخرى"},
+        {"term": "Password Spraying", "def": "رش كلمات المرور: تجربة كلمة مرور شائعة مع عدة حسابات"},
+        {"term": "Man-in-the-Disk", "def": "رجل في القرص: هجوم على تطبيقات Android عبر التخزين الخارجي"},
+        {"term": "Side-Channel Attack", "def": "هجوم القناة الجانبية: استغلال معلومات مادية (طاقة، وقت)"},
+        {"term": "Timing Attack", "def": "هجوم التوقيت: استغلال اختلاف وقت التنفيذ"},
+        {"term": "Power Analysis Attack", "def": "هجوم تحليل الطاقة: قياس استهلاك الطاقة للحصول على المعلومات"},
+        {"term": "Birthday Attack", "def": "هجوم عيد الميلاد: استغلال تصادمات دوال التجزئة"},
+        {"term": "Rainbow Table Attack", "def": "هجوم جدول قوس قزح: استخدام جداول محسوبة مسبقاً لكسر التجزئة"},
+        {"term": "Downgrade Attack", "def": "هجوم خفض المستوى: إجبار النظام على استخدام بروتوكول أضعف"},
+        {"term": "Supply Chain Attack", "def": "هجوم سلسلة التوريد: اختراق البرامج قبل وصولها للمستخدمين"}
+    ],
+
+    // القسم الخامس: أمن الشبكات والتطبيقات (50 مصطلح)
+    "أمن الشبكات والتطبيقات": [
+        {"term": "Network Security", "def": "أمن الشبكات: حماية الشبكات من الاختراق والهجمات"},
+        {"term": "Firewall", "def": "جدار ناري: جهاز أو برنامج لمراقبة ومنع حركة المرور المشبوهة"},
+        {"term": "Packet Filtering", "def": "تصفية الحزم: فحص الحزم ومنعها بناءً على قواعد"},
+        {"term": "Stateful Inspection", "def": "فحص الحالة: تتبع حالة الاتصالات لاتخاذ قرارات أفضل"},
+        {"term": "Stateless Inspection", "def": "فحص عديم الحالة: فحص كل حزمة بشكل مستقل"},
+        {"term": "Proxy Firewall", "def": "جدار ناري وكيل: يعمل كوسيط بين العميل والخادم"},
+        {"term": "NGFW", "def": "جدار ناري من الجيل التالي: يتضمن ميزات متقدمة ككشف الاختراق"},
+        {"term": "WAF", "def": "جدار ناري لتطبيقات الويب: يحمي تطبيقات الويب من الهجمات"},
+        {"term": "IDS", "def": "نظام كشف التسلل: يراقب الشبكة ويكشف الأنشطة المشبوهة"},
+        {"term": "IPS", "def": "نظام منع التسلل: يكشف ويمنع الهجمات بشكل آلي"},
+        {"term": "HIDS", "def": "نظام كشف التسلل للمضيف: يراقب نشاط جهاز معين"},
+        {"term": "NIDS", "def": "نظام كشف التسلل للشبكة: يراقب حركة المرور على الشبكة"},
+        {"term": "Signature-Based", "def": "قائم على التوقيعات: يعتمد على قاعدة بيانات لتوقيعات الهجمات المعروفة"},
+        {"term": "Anomaly-Based", "def": "قائم على الشذوذ: يكتشف السلوك غير الطبيعي"},
+        {"term": "VPN", "def": "شبكة خاصة افتراضية: اتصال مشفر عبر شبكة عامة"},
+        {"term": "Site-to-Site VPN", "def": "VPN موقع-لموقع: ربط شبكتين عبر الإنترنت بشكل آمن"},
+        {"term": "Remote Access VPN", "def": "VPN وصول عن بعد: اتصال آمن للمستخدمين البعيدين"},
+        {"term": "SSL VPN", "def": "VPN SSL: وصول عبر المتصفح باستخدام SSL/TLS"},
+        {"term": "IPSec VPN", "def": "VPN بأمن بروتوكول الإنترنت: VPN باستخدام بروتوكول IPsec"},
+        {"term": "DMZ", "def": "منطقة منزوعة السلاح: شبكة منفصلة للخدمات العامة"},
+        {"term": "VLAN", "def": "شبكة محلية افتراضية: تقسيم الشبكة المادية إلى شبكات منطقية"},
+        {"term": "VLAN Hopping", "def": "التنقل بين VLAN: هجوم للوصول إلى شبكات VLAN أخرى"},
+        {"term": "ACL", "def": "قائمة التحكم بالوصول: قواعد لتحديد السماح أو المنع"},
+        {"term": "NAC", "def": "التحكم بالوصول للشبكة: التأكد من أن الأجهزة آمنة قبل السماح لها"},
+        {"term": "802.1X", "def": "802.1X: معيار مصادقة المنافذ في الشبكات"},
+        {"term": "RADIUS", "def": "RADIUS: بروتوكول للمصادقة والتفويض والمحاسبة المركزية"},
+        {"term": "TACACS+", "def": "TACACS+: بروتوكول مصادقة من سيسكو"},
+        {"term": "Kerberos", "def": "Kerberos: بروتوكول مصادقة شبكي قوي"},
+        {"term": "Network Segmentation", "def": "تقسيم الشبكة: فصل أجزاء الشبكة لزيادة الأمان"},
+        {"term": "Micro-segmentation", "def": "التقسيم الدقيق: عزل أحمال العمل بشكل دقيق"},
+        {"term": "Zero Trust", "def": "الثقة الصفرية: عدم الثقة بأي جهة داخل أو خارج الشبكة"},
+        {"term": "ZTNA", "def": "الوصول إلى الشبكة بالثقة الصفرية: تطبيق مبادئ الثقة الصفرية"},
+        {"term": "Application Security", "def": "أمن التطبيقات: حماية التطبيقات من الثغرات والهجمات"},
+        {"term": "DevSecOps", "def": "تطوير وأمن وعمليات: دمج الأمن في دورة حياة تطوير البرمجيات"},
+        {"term": "SAST", "def": "اختبار أمني ثابت: تحليل كود المصدر للبحث عن ثغرات"},
+        {"term": "DAST", "def": "اختبار أمني ديناميكي: اختبار التطبيق أثناء التشغيل"},
+        {"term": "IAST", "def": "اختبار أمني تفاعلي: يجمع بين SAST وDAST"},
+        {"term": "RASP", "def": "حماية ذاتية للتطبيقات: حماية التطبيقات أثناء التشغيل"},
+        {"term": "SCA", "def": "تحليل تكوين البرمجيات: فحص المكونات مفتوحة المصدر"},
+        {"term": "Secure Coding", "def": "برمجة آمنة: كتابة كود خالٍ من الثغرات الأمنية"},
+        {"term": "Input Validation", "def": "التحقق من المدخلات: التأكد من صحة البيانات المدخلة"},
+        {"term": "Output Encoding", "def": "ترميز المخرجات: ترميز البيانات قبل عرضها"},
+        {"term": "Parameterized Query", "def": "استعلام معلمي: منع حقن SQL بفصل البيانات عن الكود"},
+        {"term": "Prepared Statement", "def": "بيان محضر: طريقة آمنة لتنفيذ استعلامات SQL"},
+        {"term": "Content Security Policy", "def": "سياسة أمن المحتوى: تمنع تنفيذ سكريبتات غير مرغوب بها"},
+        {"term": "CORS", "def": "مشاركة الموارد عبر الأصل: سياسة أمنية للمتصفحات"},
+        {"term": "Same-Origin Policy", "def": "سياسة نفس المصدر: تمنع المواقع من الوصول لبيانات بعضها"},
+        {"term": "X-Frame-Options", "def": "خيارات الإطار: منع تضمين الموقع في iframe"},
+        {"term": "HSTS", "def": "أمن نقل صارم: إجبار المتصفحات على استخدام HTTPS"},
+        {"term": "CSP", "def": "سياسة أمن المحتوى: تقليل هجمات XSS"},
+        {"term": "API Security", "def": "أمن API: حماية واجهات برمجة التطبيقات"}
+    ]
+},
+  // تخصص تطوير الويب (3 أقسام × 50 مصطلح = 150 مصطلح)
+"تطوير الويب": {
+    // القسم الأول: أساسيات الويب (50 مصطلح)
+    "أساسيات الويب": [
+        {"term": "HTML", "def": "لغة ترميز النصوص المستخدمة في بناء هيكل صفحات الويب"},
+        {"term": "CSS", "def": "لغة تنسيق تستخدم لتصميم وتجميل صفحات الويب"},
+        {"term": "JavaScript", "def": "لغة برمجة تضيف التفاعلية والديناميكية لصفحات الويب"},
+        {"term": "HTTP", "def": "بروتوكول نقل النص الفائق المستخدم في التواصل بين المتصفح والخادم"},
+        {"term": "HTTPS", "def": "النسخة الآمنة من بروتوكول HTTP مع تشفير البيانات"},
+        {"term": "URL", "def": "رابط موقع ويب يحدد عنوان المورد على الإنترنت"},
+        {"term": "Domain", "def": "اسم النطاق الذي يحدد عنوان الموقع مثل google.com"},
+        {"term": "Hosting", "def": "استضافة المواقع على خوادم متصلة بالإنترنت"},
+        {"term": "Web Server", "def": "خادم ويب يستضيف المواقع ويرسلها للمتصفحات"},
+        {"term": "Web Browser", "def": "متصفح ويب لعرض صفحات الإنترنت مثل Chrome و Firefox"},
+        {"term": "Client", "def": "العميل وهو جهاز المستخدم الذي يطلب البيانات من الخادم"},
+        {"term": "Server", "def": "الخادم الذي يستضيف المواقع ويستجيب لطلبات العملاء"},
+        {"term": "Frontend", "def": "الواجهة الأمامية للموقع التي يراها المستخدم"},
+        {"term": "Backend", "def": "الجزء الخلفي من الموقع الذي يعمل على الخادم"},
+        {"term": "Full Stack", "def": "مطور شامل يعمل على الواجهة الأمامية والخلفية معاً"},
+        {"term": "API", "def": "واجهة برمجة التطبيقات للتواصل بين البرامج المختلفة"},
+        {"term": "REST API", "def": "نمط معماري لتصميم واجهات برمجة التطبيقات"},
+        {"term": "JSON", "def": "صيغة خفيفة لتبادل البيانات بين الخادم والعميل"},
+        {"term": "XML", "def": "لغة ترميز موسعة تستخدم لتخزين وتبادل البيانات"},
+        {"term": "AJAX", "def": "تقنية لتحديث أجزاء من صفحة الويب بدون إعادة تحميل كاملة"},
+        {"term": "WebSocket", "def": "بروتوكول يتيح اتصال ثنائي الاتجاه بين العميل والخادم"},
+        {"term": "Cookie", "def": "ملف نصي صغير يخزن بيانات المستخدم في المتصفح"},
+        {"term": "Session", "def": "جلسة مستخدم تخزن بياناته مؤقتاً على الخادم"},
+        {"term": "LocalStorage", "def": "تخزين محلي في المتصفح يحتفظ بالبيانات لفترة طويلة"},
+        {"term": "SessionStorage", "def": "تخزين مؤقت في المتصفح للبيانات أثناء الجلسة فقط"},
+        {"term": "Cache", "def": "ذاكرة تخزين مؤقت لتسريع تحميل الصفحات"},
+        {"term": "CDN", "def": "شبكة توصيل المحتوى لتوزيع الملفات على خوادم حول العالم"},
+        {"term": "SEO", "def": "تحسين محركات البحث لظهور الموقع في نتائج البحث"},
+        {"term": "Responsive Design", "def": "تصميم متجاوب يتكيف مع جميع أحجام الشاشات"},
+        {"term": "Mobile First", "def": "منهجية تصميم تبدأ بالهواتف ثم الأجهزة الأكبر"},
+        {"term": "Cross-Browser", "def": "توافق الموقع مع مختلف المتصفحات"},
+        {"term": "Accessibility", "def": "إمكانية الوصول لضمان استخدام الموقع لذوي الاحتياجات الخاصة"},
+        {"term": "DOCTYPE", "def": "تعريف نوع المستند لإخبار المتصفح بإصدار HTML"},
+        {"term": "Meta Tags", "def": "وسوم توفر معلومات وصفية عن صفحة الويب"},
+        {"term": "Viewport", "def": "إعدادات منطقة العرض للتحكم بحجم الصفحة على الجوال"},
+        {"term": "Favicon", "def": "أيقونة صغيرة تظهر في علامة تبويب المتصفح"},
+        {"term": "Sitemap", "def": "خريطة الموقع تساعد محركات البحث في فهرسة الصفحات"},
+        {"term": "Robots.txt", "def": "ملف يوجه محركات البحث أي الصفحات تزور"},
+        {"term": "SSL Certificate", "def": "شهادة أمان لتشفير الاتصال في المواقع"},
+        {"term": "DNS", "def": "نظام أسماء النطاقات لتحويل أسماء المواقع إلى عناوين IP"},
+        {"term": "Web Host", "def": "شركة استضافة توفر مساحة للمواقع على الإنترنت"},
+        {"term": "Domain Registrar", "def": "شركة تسجيل أسماء النطاقات"},
+        {"term": "Subdomain", "def": "نطاق فرعي مثل blog.example.com"},
+        {"term": "TLD", "def": "النطاق الأعلى مثل .com, .org, .net"},
+        {"term": "Port", "def": "منفذ للاتصال مثل 80 لـ HTTP و 443 لـ HTTPS"},
+        {"term": "Status Code", "def": "رمز حالة HTTP مثل 404 للصفحة غير موجودة"},
+        {"term": "200 OK", "def": "رمز استجابة ناجحة للطلب"},
+        {"term": "404 Not Found", "def": "رمز خطأ عند عدم وجود الصفحة المطلوبة"},
+        {"term": "500 Internal Server", "def": "رمز خطأ في الخادم الداخلي"},
+        {"term": "Redirect", "def": "إعادة توجيه من رابط إلى آخر مثل 301"}
+    ],
+
+    // القسم الثاني: أطر العمل الأمامية (50 مصطلح)
+    "أطر العمل الأمامية": [
+        {"term": "React", "def": "مكتبة JavaScript لبناء واجهات المستخدم من فيسبوك"},
+        {"term": "Angular", "def": "إطار عمل لتطبيقات الويب من جوجل باستخدام TypeScript"},
+        {"term": "Vue.js", "def": "إطار عمل تدريجي وسهل لبناء واجهات المستخدم"},
+        {"term": "Svelte", "def": "إطار عمل مبتكر يحول الكود إلى JavaScript خالص"},
+        {"term": "Next.js", "def": "إطار عمل React لتطبيقات السيرفر سايد والستاتيك"},
+        {"term": "Nuxt.js", "def": "إطار عمل Vue.js لتطبيقات السيرفر سايد"},
+        {"term": "Gatsby", "def": "مولد مواقع ثابتة يعتمد على React"},
+        {"term": "Remix", "def": "إطار عمل React لتطبيقات الويب الحديثة"},
+        {"term": "Astro", "def": "أداة بناء مواقع سريعة تركز على المحتوى"},
+        {"term": "Solid.js", "def": "مكتبة JavaScript تفاعلية تشبه React لكن أسرع"},
+        {"term": "Preact", "def": "بديل خفيف لـ React بنفس الواجهة البرمجية"},
+        {"term": "Alpine.js", "def": "إطار عمل خفيف للتفاعلية يشبه Vue و Tailwind"},
+        {"term": "HTMX", "def": "مكتبة تتيح استخدام AJAX مباشرة في HTML"},
+        {"term": "Stimulus", "def": "إطار عمل JavaScript خفيف من Ruby on Rails"},
+        {"term": "Lit", "def": "مكتبة لبناء مكونات ويب خفيفة"},
+        {"term": "jQuery", "def": "مكتبة JavaScript كلاسيكية لتبسيط التعامل مع DOM"},
+        {"term": "Bootstrap", "def": "إطار عمل CSS شهير لتصميم مواقع متجاوبة"},
+        {"term": "Tailwind CSS", "def": "إطار عمل CSS فائدته الأولى توفير كلاسات مساعدة"},
+        {"term": "Bulma", "def": "إطار عمل CSS حديث قائم على Flexbox"},
+        {"term": "Material UI", "def": "مكتبة مكونات React بتصميم Material Design من جوجل"},
+        {"term": "Chakra UI", "def": "مكتبة مكونات React بسيطة وقابلة للتخصيص"},
+        {"term": "Ant Design", "def": "مكتبة مكونات React بتصميم أنيق للمشاريع الكبيرة"},
+        {"term": "Mantine", "def": "مكتبة مكونات React حديثة وغنية بالميزات"},
+        {"term": "Semantic UI", "def": "إطار عمل CSS يركز على الأسماء ذات المعنى"},
+        {"term": "Foundation", "def": "إطار عمل CSS متجاوب من ZURB"},
+        {"term": "Pure CSS", "def": "إطار عمل CSS خفيف من Yahoo"},
+        {"term": "UIKit", "def": "إطار عمل CSS خفيف وسهل الاستخدام"},
+        {"term": "Redux", "def": "مكتبة لإدارة حالة تطبيقات JavaScript"},
+        {"term": "Zustand", "def": "مكتبة صغيرة وسريعة لإدارة الحالة في React"},
+        {"term": "MobX", "def": "مكتبة لإدارة الحالة بسيطة وقابلة للتوسع"},
+        {"term": "Recoil", "def": "مكتبة إدارة حالة من فيسبوك لتطبيقات React"},
+        {"term": "Jotai", "def": "مكتبة إدارة حالة صغيرة وبسيطة لـ React"},
+        {"term": "Context API", "def": "واجهة إدارة حالة مدمجة في React"},
+        {"term": "Vuex", "def": "مكتبة إدارة حالة رسمية لتطبيقات Vue.js"},
+        {"term": "Pinia", "def": "مكتبة إدارة حالة حديثة وسهلة لـ Vue.js"},
+        {"term": "NgRx", "def": "مكتبة إدارة حالة لتطبيقات Angular مستوحاة من Redux"},
+        {"term": "Axios", "def": "مكتبة للتعامل مع طلبات HTTP من المتصفح"},
+        {"term": "React Query", "def": "مكتبة لإدارة البيانات غير المتزامنة في React"},
+        {"term": "SWR", "def": "مكتبة لجلب البيانات من Vercel مع استراتيجية stale-while-revalidate"},
+        {"term": "Apollo Client", "def": "مكتبة للتعامل مع GraphQL من JavaScript"},
+        {"term": "Relay", "def": "مكتبة GraphQL من فيسبوك لتطبيقات React"},
+        {"term": "Formik", "def": "مكتبة لبناء النماذج في React"},
+        {"term": "React Hook Form", "def": "مكتبة نماذج سريعة وخفيفة لـ React"},
+        {"term": "Yup", "def": "مكتبة للتحقق من صحة البيانات"},
+        {"term": "Zod", "def": "مكتبة للتحقق من صحة البيانات باستخدام TypeScript"},
+        {"term": "React Router", "def": "مكتبة التوجيه القياسية لتطبيقات React"},
+        {"term": "Reach Router", "def": "مكتبة توجيه بسيطة لـ React"},
+        {"term": "Vue Router", "def": "مكتبة التوجيه الرسمية لتطبيقات Vue.js"},
+        {"term": "Angular Router", "def": "مكتبة التوجيه المدمجة في Angular"},
+        {"term": "Framer Motion", "def": "مكتبة حركات لـ React سهلة وقوية"}
+    ],
+
+    // القسم الثالث: أطر العمل الخلفية (50 مصطلح)
+    "أطر العمل الخلفية": [
+        {"term": "Node.js", "def": "بيئة تشغيل JavaScript على الخادم مبنية على محرك V8"},
+        {"term": "Express.js", "def": "إطار عمل خفيف وسريع لتطبيقات Node.js"},
+        {"term": "Nest.js", "def": "إطار عمل Node.js تقدمي ومنظم باستخدام TypeScript"},
+        {"term": "Fastify", "def": "إطار عمل Node.js سريع ومنخفض الموارد"},
+        {"term": "Koa.js", "def": "إطار عمل Node.js حديث من صناع Express"},
+        {"term": "Adonis.js", "def": "إطار عمل Node.js متكامل يشبه Laravel"},
+        {"term": "Feathers.js", "def": "إطار عمل Node.js لبناء تطبيقات الوقت الفعلي"},
+        {"term": "Sails.js", "def": "إطار عمل Node.js يشبه Ruby on Rails"},
+        {"term": "LoopBack", "def": "إطار عمل Node.js لبناء APIs قابلة للتوسع"},
+        {"term": "Meteor", "def": "منصة كاملة لتطوير تطبيقات JavaScript"},
+        {"term": "Django", "def": "إطار عمل Python عالي المستوى ومتكامل"},
+        {"term": "Flask", "def": "إطار عمل Python بسيط وخفيف"},
+        {"term": "FastAPI", "def": "إطار عمل Python حديث وسريع مع دعم تلقائي للتوثيق"},
+        {"term": "Pyramid", "def": "إطار عمل Python مرن وقابل للتوسع"},
+        {"term": "Tornado", "def": "إطار عمل Python لمعالجة الشبكات غير المتزامنة"},
+        {"term": "Sanic", "def": "إطار عمل Python غير متزامن وسريع"},
+        {"term": "Laravel", "def": "إطار عمل PHP أنيق وسهل الاستخدام"},
+        {"term": "Symfony", "def": "إطار عمل PHP قوي ومرن للمشاريع الكبيرة"},
+        {"term": "CodeIgniter", "def": "إطار عمل PHP خفيف وسريع"},
+        {"term": "CakePHP", "def": "إطار عمل PHP بسيط وسهل التعلم"},
+        {"term": "Yii", "def": "إطار عمل PHP سريع وآمن"},
+        {"term": "Phalcon", "def": "إطار عمل PHP سريع مكتوب بلغة C"},
+        {"term": "Slim", "def": "إطار عمل PHP صغير لبناء APIs"},
+        {"term": "Spring Boot", "def": "إطار عمل Java لتطبيقات الويب المستقلة"},
+        {"term": "Spring MVC", "def": "إطار عمل Java لنمط Model-View-Controller"},
+        {"term": "Jakarta EE", "def": "منصة Java للمشاريع الكبيرة (سابقاً Java EE)"},
+        {"term": "Quarkus", "def": "إطار عمل Java محسّن للحاويات والسحابة"},
+        {"term": "Micronaut", "def": "إطار عمل Java خفيف وسريع البدء"},
+        {"term": "Vert.x", "def": "مجموعة أدوات لبناء تطبيقات React على JVM"},
+        {"term": "ASP.NET Core", "def": "إطار عمل Microsoft لبناء تطبيقات ويب عالية الأداء"},
+        {"term": "Ruby on Rails", "def": "إطار عمل Ruby كامل المكدس وسريع التطوير"},
+        {"term": "Sinatra", "def": "إطار عمل Ruby خفيف لبناء APIs بسرعة"},
+        {"term": "Go Gin", "def": "إطار عمل Go سريع وخفيف"},
+        {"term": "Go Echo", "def": "إطار عمل Go عالي الأداء وبسيط"},
+        {"term": "Go Fiber", "def": "إطار عمل Go مستوحى من Express.js"},
+        {"term": "Go Revel", "def": "إطار عمل Go تجاري كامل الميزات"},
+        {"term": "Phoenix", "def": "إطار عمل Elixir لتطبيقات الويب عالية الأداء"},
+        {"term": "Rocket", "def": "إطار عمل Rust لتطبيقات الويب الآمنة"},
+        {"term": "Actix Web", "def": "إطار عمل Rust سريع جداً"},
+        {"term": "Ktor", "def": "إطار عمل Kotlin لبناء تطبيقات الويب غير المتزامنة"},
+        {"term": "Play Framework", "def": "إطار عمل Scala و Java سريع وحديث"},
+        {"term": "Lift", "def": "إطار عمل Scala آمن وسهل الاستخدام"},
+        {"term": "Deno", "def": "بيئة تشغيل JavaScript و TypeScript آمنة من صنع مبتكر Node.js"},
+        {"term": "Bun", "def": "بيئة تشغيل JavaScript سريعة ومتكاملة مع مدير حزم"},
+        {"term": "GraphQL", "def": "لغة استعلام للـ API تتيح جلب بيانات محددة"},
+        {"term": "Apollo Server", "def": "خادم GraphQL مفتوح المصدر"},
+        {"term": "Hasura", "def": "محرك GraphQL فوري فوق قواعد البيانات"},
+        {"term": "Prisma", "def": "ORM حديث لـ Node.js و TypeScript"},
+        {"term": "TypeORM", "def": "ORM لـ TypeScript و JavaScript يدعم قواعد بيانات متعددة"},
+        {"term": "Sequelize", "def": "ORM لـ Node.js يدعم SQL databases متعددة"}
+    ]
+},
+           // ---------- قاعدة بيانات التحليل (3 أقسام × 50 مصطلح = 150 مصطلح) ----------
+"التحليل": {
+    // القسم الأول: تحليل البيانات (50 مصطلح)
+    "تحليل البيانات": [
+        {"term": "Data Analysis", "def": "تحليل البيانات: عملية فحص وتنظيف وتحويل البيانات"},
+        {"term": "Data Science", "def": "علم البيانات: مجال متعدد التخصصات لاستخراج المعرفة من البيانات"},
+        {"term": "Analytics", "def": "التحليلات: اكتشاف الأنماط والرؤى من البيانات"},
+        {"term": "Business Intelligence", "def": "ذكاء الأعمال: استراتيجيات وتقنيات لتحليل البيانات التجارية"},
+        {"term": "Data Mining", "def": "التنقيب في البيانات: اكتشاف الأنماط في مجموعات البيانات الكبيرة"},
+        {"term": "Big Data", "def": "البيانات الضخمة: مجموعات بيانات ضخمة ومعقدة"},
+        {"term": "Data Visualization", "def": "تصور البيانات: تمثيل البيانات بشكل رسومي"},
+        {"term": "Dashboard", "def": "لوحة المعلومات: عرض مرئي للمؤشرات الرئيسية"},
+        {"term": "KPI", "def": "مؤشر الأداء الرئيسي: مقياس قابل للقياس للأداء"},
+        {"term": "Data Warehouse", "def": "مستودع البيانات: نظام مركزي لتخزين البيانات"},
+        {"term": "Data Lake", "def": "بحيرة البيانات: مستودع يخزن البيانات الأولية"},
+        {"term": "ETL", "def": "استخراج وتحويل وتحميل: عملية نقل البيانات"},
+        {"term": "Data Pipeline", "def": "خط أنابيب البيانات: سلسلة من خطوات معالجة البيانات"},
+        {"term": "Data Governance", "def": "حوكمة البيانات: إدارة توفر البيانات وسلامتها"},
+        {"term": "Data Quality", "def": "جودة البيانات: دقة واكتمال البيانات"},
+        {"term": "Data Cleansing", "def": "تنظيف البيانات: تصحيح الأخطاء في البيانات"},
+        {"term": "Data Profiling", "def": "توصيف البيانات: فحص البيانات وفهم هيكلها"},
+        {"term": "Data Integration", "def": "تكامل البيانات: دمج البيانات من مصادر متعددة"},
+        {"term": "Data Migration", "def": "ترحيل البيانات: نقل البيانات بين الأنظمة"},
+        {"term": "Data Architecture", "def": "هندسة البيانات: تصميم نظم إدارة البيانات"},
+        {"term": "Data Modeling", "def": "نمذجة البيانات: إنشاء مخطط للبيانات"},
+        {"term": "Data Dictionary", "def": "قاموس البيانات: وصف عناصر البيانات"},
+        {"term": "Metadata", "def": "البيانات الوصفية: بيانات تصف بيانات أخرى"},
+        {"term": "Data Lineage", "def": "سلالة البيانات: تتبع مصدر البيانات"},
+        {"term": "Data Catalog", "def": "كتالوج البيانات: فهرس للأصول البيانات"},
+        {"term": "Data Strategy", "def": "استراتيجية البيانات: خطة لإدارة البيانات"},
+        {"term": "Data Maturity", "def": "نضج البيانات: مستوى تطور ممارسات البيانات"},
+        {"term": "Data Culture", "def": "ثقافة البيانات: بيئة تعزز استخدام البيانات"},
+        {"term": "Data Literacy", "def": "محو الأمية البيانات: القدرة على قراءة البيانات"},
+        {"term": "Data Storytelling", "def": "سرد البيانات: تقديم البيانات كقصة"},
+        {"term": "Descriptive Analytics", "def": "التحليلات الوصفية: ماذا حدث؟"},
+        {"term": "Diagnostic Analytics", "def": "التحليلات التشخيصية: لماذا حدث؟"},
+        {"term": "Predictive Analytics", "def": "التحليلات التنبؤية: ماذا سيحدث؟"},
+        {"term": "Prescriptive Analytics", "def": "التحليلات الإرشادية: ماذا نفعل؟"},
+        {"term": "Cognitive Analytics", "def": "التحليلات المعرفية: تحليل يشبه العقل البشري"},
+        {"term": "Real-time Analytics", "def": "التحليلات الفورية: تحليل البيانات فور وصولها"},
+        {"term": "Stream Analytics", "def": "تحليلات التدفق: معالجة تدفقات البيانات المستمرة"},
+        {"term": "Batch Processing", "def": "معالجة الدفعات: معالجة مجموعات البيانات في دفعات"},
+        {"term": "OLAP", "def": "المعالجة التحليلية عبر الإنترنت: تحليل متعدد الأبعاد"},
+        {"term": "OLTP", "def": "معالجة المعاملات عبر الإنترنت: معالجة المعاملات اليومية"},
+        {"term": "Dimension", "def": "البعد: فئة أو منظور في تحليل البيانات"},
+        {"term": "Measure", "def": "المقياس: قيمة قابلة للقياس في تحليل البيانات"},
+        {"term": "Fact Table", "def": "جدول الحقائق: جدول يحتوي على المقاييس"},
+        {"term": "Dimension Table", "def": "جدول الأبعاد: جدول يحتوي على وصف البيانات"},
+        {"term": "Star Schema", "def": "مخطط النجمة: تصميم قاعدة بيانات لمستودع البيانات"},
+        {"term": "Snowflake Schema", "def": "مخطط ندفة الثلج: تطبيع جداول الأبعاد"},
+        {"term": "Data Mart", "def": "متجر البيانات: مستودع بيانات متخصص"},
+        {"term": "Operational Database", "def": "قاعدة البيانات التشغيلية: قاعدة بيانات للعمليات اليومية"},
+        {"term": "Analytical Database", "def": "قاعدة البيانات التحليلية: قاعدة بيانات محسنة للتحليل"},
+        {"term": "In-memory Database", "def": "قاعدة البيانات في الذاكرة: قاعدة بيانات تخزن البيانات في الذاكرة"}
+    ],
+
+    // القسم الثاني: أدوات التحليل (50 مصطلح)
+    "أدوات التحليل": [
+        {"term": "Excel", "def": "إكسل: برنامج جداول بيانات من مايكروسوفت"},
+        {"term": "Google Sheets", "def": "جوجل شيتس: برنامج جداول بيانات عبر الإنترنت"},
+        {"term": "Power BI", "def": "باور بي آي: أداة تحليل وتصور بيانات من مايكروسوفت"},
+        {"term": "Tableau", "def": "تابلو: أداة تصور وتحليل بيانات"},
+        {"term": "QlikView", "def": "كليك فيو: أداة تحليل وتصور بيانات"},
+        {"term": "Qlik Sense", "def": "كليك سينس: منصة تحليل بيانات حديثة"},
+        {"term": "Looker", "def": "لوكر: منصة تحليل بيانات من جوجل"},
+        {"term": "Domo", "def": "دومو: منصة تحليل بيانات سحابية"},
+        {"term": "Sisense", "def": "سيسينس: أداة تحليل بيانات مدمجة"},
+        {"term": "MicroStrategy", "def": "مايكروستراتيجي: منصة ذكاء أعمال"},
+        {"term": "SAP Analytics", "def": "إس إيه بي أناليتكس: حل تحليلات من SAP"},
+        {"term": "Oracle Analytics", "def": "أوراكل أناليتكس: منصة تحليلات من أوراكل"},
+        {"term": "IBM Cognos", "def": "آي بي إم كوجنوس: منصة ذكاء أعمال"},
+        {"term": "SAS", "def": "إس إيه إس: حزمة برامج تحليل إحصائي"},
+        {"term": "SPSS", "def": "إس بي إس إس: برنامج تحليل إحصائي"},
+        {"term": "R", "def": "آر: لغة برمجة للتحليل الإحصائي"},
+        {"term": "RStudio", "def": "آر ستوديو: بيئة تطوير متكاملة لـ R"},
+        {"term": "Python", "def": "بايثون: لغة برمجة لتحليل البيانات"},
+        {"term": "Pandas", "def": "بانداس: مكتبة بايثون لتحليل البيانات"},
+        {"term": "NumPy", "def": "نومبي: مكتبة بايثون للحسابات الرقمية"},
+        {"term": "SciPy", "def": "ساي باي: مكتبة بايثون للعلوم والهندسة"},
+        {"term": "Matplotlib", "def": "ماتبلوتليب: مكتبة بايثون لتصور البيانات"},
+        {"term": "Seaborn", "def": "سيبورن: مكتبة تصور بيانات متقدمة"},
+        {"term": "Plotly", "def": "بلوتلي: مكتبة تصور بيانات تفاعلية"},
+        {"term": "ggplot2", "def": "جي جي بلوت 2: مكتبة تصور بيانات في R"},
+        {"term": "dplyr", "def": "دي بلاير: مكتبة R لمعالجة البيانات"},
+        {"term": "tidyr", "def": "تيداير: مكتبة R لتنظيف البيانات"},
+        {"term": "Shiny", "def": "شايني: إطار عمل R لتطبيقات ويب تفاعلية"},
+        {"term": "Jupyter", "def": "جوبيتر: بيئة تفاعلية للبرمجة"},
+        {"term": "JupyterLab", "def": "جوبيتر لاب: بيئة تطوير متكاملة"},
+        {"term": "Google Colab", "def": "جوجل كولاب: بيئة دفتر ملاحظات سحابية"},
+        {"term": "Kaggle", "def": "كاجل: منصة مسابقات ومجتمع بيانات"},
+        {"term": "Databricks", "def": "داتابريكس: منصة بيانات سحابية"},
+        {"term": "Apache Spark", "def": "أباتشي سبارك: محرك معالجة بيانات موزعة"},
+        {"term": "Hadoop", "def": "هادووب: إطار عمل للبيانات الضخمة"},
+        {"term": "Hive", "def": "هايف: بنية تحتية لمستودع بيانات على Hadoop"},
+        {"term": "Pig", "def": "بيج: منصة لتحليل مجموعات البيانات الكبيرة"},
+        {"term": "HBase", "def": "إتش بيز: قاعدة بيانات NoSQL على Hadoop"},
+        {"term": "Cassandra", "def": "كاساندرا: قاعدة بيانات NoSQL موزعة"},
+        {"term": "MongoDB", "def": "مونغو دي بي: قاعدة بيانات NoSQL وثائقية"},
+        {"term": "Elasticsearch", "def": "إيلاستيك سيرش: محرك بحث وتحليل"},
+        {"term": "Kibana", "def": "كيبانا: منصة تصور بيانات لـ Elasticsearch"},
+        {"term": "Logstash", "def": "لوغستاش: خط أنابيب معالجة البيانات"},
+        {"term": "Apache Kafka", "def": "أباتشي كافكا: منصة تدفق الأحداث"},
+        {"term": "Apache Flink", "def": "أباتشي فلينك: محرك معالجة تدفقات"},
+        {"term": "Apache Storm", "def": "أباتشي ستورم: نظام معالجة تدفقات"},
+        {"term": "Apache Airflow", "def": "أباتشي إيرفلو: منصة لإدارة سير العمل"},
+        {"term": "dbt", "def": "دي بي تي: أداة تحويل البيانات"},
+        {"term": "Fivetran", "def": "فايفتران: أداة تكامل بيانات"},
+        {"term": "Stitch", "def": "ستيتش: أداة نقل بيانات"}
+    ],
+
+    // القسم الثالث: الإحصاء والرياضيات (50 مصطلح)
+    "الإحصاء والرياضيات": [
+        {"term": "Statistics", "def": "الإحصاء: علم جمع وتحليل البيانات"},
+        {"term": "Probability", "def": "الاحتمالات: قياس احتمالية وقوع حدث"},
+        {"term": "Mean", "def": "المتوسط: مجموع القيم مقسوماً على عددها"},
+        {"term": "Median", "def": "الوسيط: القيمة الوسطى في مجموعة البيانات"},
+        {"term": "Mode", "def": "المنوال: القيمة الأكثر تكراراً"},
+        {"term": "Standard Deviation", "def": "الانحراف المعياري: مقياس التشتت"},
+        {"term": "Variance", "def": "التباين: مربع الانحراف المعياري"},
+        {"term": "Range", "def": "المدى: الفرق بين أكبر وأصغر قيمة"},
+        {"term": "Quartile", "def": "الربيعي: تقسيم البيانات إلى أرباع"},
+        {"term": "Percentile", "def": "المئيني: قيمة النسبة المئوية"},
+        {"term": "Interquartile Range", "def": "المدى الربيعي: الفرق بين الربيعي الأول والثالث"},
+        {"term": "Correlation", "def": "الارتباط: قوة العلاقة بين متغيرين"},
+        {"term": "Covariance", "def": "التباين المشترك: مقياس العلاقة الخطية"},
+        {"term": "Regression", "def": "الانحدار: تحليل العلاقة بين المتغيرات"},
+        {"term": "Linear Regression", "def": "الانحدار الخطي: نموذج خطي للعلاقة"},
+        {"term": "Logistic Regression", "def": "الانحدار اللوجستي: للتنبؤ بالنتائج الثنائية"},
+        {"term": "Hypothesis Testing", "def": "اختبار الفرضيات: التحقق من صحة الافتراضات"},
+        {"term": "Null Hypothesis", "def": "الفرضية الصفرية: افتراض عدم وجود تأثير"},
+        {"term": "Alternative Hypothesis", "def": "الفرضية البديلة: افتراض وجود تأثير"},
+        {"term": "P-value", "def": "قيمة الاحتمالية: قوة الأدلة ضد الفرضية الصفرية"},
+        {"term": "Confidence Interval", "def": "فاصل الثقة: نطاق تقدير المعلمة"},
+        {"term": "Significance Level", "def": "مستوى الدلالة: احتمال رفض الفرضية الصفرية"},
+        {"term": "Type I Error", "def": "خطأ من النوع الأول: رفض فرضية صحيحة"},
+        {"term": "Type II Error", "def": "خطأ من النوع الثاني: قبول فرضية خاطئة"},
+        {"term": "T-test", "def": "اختبار تي: مقارنة متوسطي مجموعتين"},
+        {"term": "ANOVA", "def": "تحليل التباين: مقارنة متوسطات عدة مجموعات"},
+        {"term": "Chi-square Test", "def": "اختبار كاي تربيع: تحليل العلاقات الفئوية"},
+        {"term": "Normal Distribution", "def": "التوزيع الطبيعي: توزيع متماثل على شكل جرس"},
+        {"term": "Binomial Distribution", "def": "التوزيع ذو الحدين: توزيع النتائج الثنائية"},
+        {"term": "Poisson Distribution", "def": "توزيع بواسون: توزيع الأحداث النادرة"},
+        {"term": "Exponential Distribution", "def": "التوزيع الأسي: توزيع أوقات الانتظار"},
+        {"term": "Uniform Distribution", "def": "التوزيع المنتظم: قيم متساوية الاحتمال"},
+        {"term": "Central Limit Theorem", "def": "نظرية النهاية المركزية: توزيع متوسطات العينات"},
+        {"term": "Bayes Theorem", "def": "نظرية بايز: الاحتمال الشرطي"},
+        {"term": "Bayesian Statistics", "def": "الإحصاء البايزي: تحديث الاحتمالات بالمعرفة السابقة"},
+        {"term": "Maximum Likelihood", "def": "الإمكان الأعظم: تقدير المعلمات"},
+        {"term": "Sampling", "def": "أخذ العينات: اختيار جزء من المجتمع"},
+        {"term": "Random Sampling", "def": "العينة العشوائية: اختيار عشوائي"},
+        {"term": "Stratified Sampling", "def": "العينة الطبقية: تقسيم المجتمع لطبقات"},
+        {"term": "Cluster Sampling", "def": "العينة العنقودية: اختيار مجموعات كاملة"},
+        {"term": "Bias", "def": "الانحياز: خطأ منهجي في القياس"},
+        {"term": "Outlier", "def": "القيمة الشاذة: قيمة مختلفة كثيراً عن باقي البيانات"},
+        {"term": "Multivariate Analysis", "def": "التحليل متعدد المتغيرات: تحليل متغيرات متعددة"},
+        {"term": "Factor Analysis", "def": "تحليل العوامل: تقليل الأبعاد"},
+        {"term": "Principal Component Analysis", "def": "تحليل المكونات الرئيسية: تقليل الأبعاد"},
+        {"term": "Cluster Analysis", "def": "التحليل العنقودي: تجميع البيانات المتشابهة"},
+        {"term": "Time Series Analysis", "def": "تحليل السلاسل الزمنية: تحليل البيانات عبر الزمن"},
+        {"term": "Forecasting", "def": "التنبؤ: توقع القيم المستقبلية"},
+        {"term": "Seasonality", "def": "الموسمية: أنماط متكررة دورياً"},
+        {"term": "Trend", "def": "الاتجاه: حركة طويلة الأجل"},
+        {"term": "Stationarity", "def": "الثبات: خصائص إحصائية ثابتة عبر الزمن"}
+    ]
+},
+            
+     
+      
+        };
+
+        // حساب الإحصائيات
+        let totalSections = 0;
+        let totalTerms = 0;
+        for (const sp in data) {
+            totalSections += Object.keys(data[sp]).length;
+            for (const sec in data[sp]) {
+                totalTerms += data[sp][sec].length;
+            }
+        }
+        document.getElementById('totalSpecialties').textContent = Object.keys(data).length;
+        document.getElementById('totalSections').textContent = totalSections + '+';
+        document.getElementById('totalTerms').textContent = totalTerms + '+';
+
+        // ---------- المتغيرات العامة ----------
+        let currentSpecialty = null;
+        let currentSection = null;
+        let navigationHistory = [];
+
+        // عناصر DOM
+        const pathSpan = document.getElementById('currentPathText');
+        const statsSpan = document.getElementById('statsText');
+        const contentDiv = document.getElementById('content');
+        const statsIcon = document.querySelector('.stats i');
+        
+        // أزرار التنقل
+        const backToTermsBtn = document.getElementById('backToTermsBtn');
+        const backToSectionsBtn = document.getElementById('backToSectionsBtn');
+        const backToSpecialtiesBtn = document.getElementById('backToSpecialtiesBtn');
+
+        // ---------- تحديث أزرار التنقل ----------
+        function updateNavigationButtons() {
+            backToTermsBtn.disabled = !currentSection;
+            backToSectionsBtn.disabled = !currentSpecialty;
+            backToSpecialtiesBtn.disabled = false;
+            
+            if (!currentSpecialty) {
+                backToSpecialtiesBtn.disabled = true;
+            }
+        }
+
+        // دوال الرجوع
+        function goBackToTerms() {
+            if (currentSection) {
+                showTerms(currentSpecialty, currentSection);
+            }
+        }
+
+        function goBackToSections() {
+            if (currentSpecialty) {
+                showSections(currentSpecialty);
+            }
+        }
+
+        function goBackToSpecialties() {
+            showSpecialties();
+        }
+
+        // ---------- دوال العرض ----------
+        function updateUIPath() {
+            if (!currentSpecialty) {
+                pathSpan.innerText = 'التخصصات';
+            } else if (!currentSection) {
+                pathSpan.innerText = currentSpecialty;
+            } else {
+                pathSpan.innerText = `${currentSpecialty} / ${currentSection}`;
+            }
+            updateNavigationButtons();
+        }
+
+        function setStats(text, icon = 'database') {
+            statsIcon.className = `fas fa-${icon}`;
+            statsSpan.innerText = text;
+        }
+
+        function showSpecialties() {
+            currentSpecialty = null;
+            currentSection = null;
+            updateUIPath();
+
+            let html = '<div class="specialty-grid">';
+            for (const specialty in data) {
+                html += `<button class="specialty-btn" onclick="showSections('${specialty}')">${specialty}</button>`;
+            }
+            html += '</div>';
+            contentDiv.innerHTML = html;
+            setStats(`اختر تخصصك للبدء`, 'compass');
+            
+            navigationHistory = [];
+            history.pushState({ page: 'home' }, '', '');
+        }
+
+        function showSections(specialty) {
+            navigationHistory.push({ specialty: currentSpecialty, section: currentSection });
+            currentSpecialty = specialty;
+            currentSection = null;
+            updateUIPath();
+
+            const sections = data[specialty];
+            let html = '<div class="section-grid">';
+            for (const section in sections) {
+                html += `<button class="section-btn" onclick="showTerms('${specialty}', '${section}')">
+                            ${section}
+                            <span class="badge">${sections[section].length}</span>
+                         </button>`;
+            }
+            html += '</div>';
+            contentDiv.innerHTML = html;
+            setStats(`أقسام ${specialty}: ${Object.keys(sections).length} قسم`, 'folder');
+            
+            history.pushState({ specialty: specialty }, '', '');
+        }
+
+        function showTerms(specialty, section) {
+            navigationHistory.push({ specialty: currentSpecialty, section: currentSection });
+            currentSpecialty = specialty;
+            currentSection = section;
+            updateUIPath();
+
+            const terms = data[specialty][section];
+            displayTerms(terms);
+            setStats(`${terms.length} مصطلح في ${section}`, 'book-open');
+            
+            history.pushState({ specialty: specialty, section: section }, '', '');
+        }
+
+        function displayTerms(terms) {
+            if (terms.length === 0) {
+                contentDiv.innerHTML = '<div class="no-results"><i class="fas fa-database" style="margin-left: 10px;"></i>هذا القسم فارغ حالياً - أضف المصطلحات الخاصة بك</div>';
+                return;
+            }
+            
+            let html = '<div class="cards-grid">';
+            terms.forEach(t => {
+                html += `<div class="term-card">
+                            <h3>${t.term}</h3>
+                            <p>${t.def}</p>
+                            <small><i class="fas fa-tag"></i> ${currentSpecialty}</small>
+                         </div>`;
+            });
+            html += '</div>';
+            contentDiv.innerHTML = html;
+        }
+
+        window.addEventListener('popstate', function(event) {
+            if (navigationHistory.length > 0) {
+                const prev = navigationHistory.pop();
+                currentSpecialty = prev.specialty;
+                currentSection = prev.section;
+
+                if (!currentSpecialty) {
+                    showSpecialties();
+                } else if (!currentSection) {
+                    showSections(currentSpecialty);
+                } else {
+                    showTerms(currentSpecialty, currentSection);
+                }
+            } else {
+                showSpecialties();
+            }
+        });
+
+        let searchTimeout;
+        function handleSearch() {
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(() => {
+                const term = document.getElementById('searchInput').value.trim().toLowerCase();
+                if (!term) {
+                    if (currentSection) {
+                        showTerms(currentSpecialty, currentSection);
+                    } else if (currentSpecialty) {
+                        showSections(currentSpecialty);
+                    } else {
+                        showSpecialties();
+                    }
+                    return;
+                }
+
+                let results = [];
+                for (const sp in data) {
+                    for (const sec in data[sp]) {
+                        data[sp][sec].forEach(item => {
+                            if (item.term && (item.term.toLowerCase().includes(term) || item.def.toLowerCase().includes(term))) {
+                                results.push({ ...item, specialty: sp, section: sec });
+                            }
+                        });
+                    }
+                }
+
+                if (results.length) {
+                    let html = '<div class="cards-grid">';
+                    results.forEach(r => {
+                        html += `<div class="term-card" onclick="showTerms('${r.specialty}', '${r.section}')">
+                                    <h3>${r.term}</h3>
+                                    <p>${r.def}</p>
+                                    <small><i class="fas fa-folder"></i> ${r.specialty}</small>
+                                 </div>`;
+                    });
+                    html += '</div>';
+                    contentDiv.innerHTML = html;
+                    setStats(`تم العثور على ${results.length} نتيجة`, 'search');
+                } else {
+                    contentDiv.innerHTML = '<div class="no-results">لا توجد نتائج للبحث</div>';
+                    setStats('لا توجد نتائج', 'times');
+                }
+            }, 300);
+        }
+
+        showSpecialties();
+    </script>
+</body>
+</html>
