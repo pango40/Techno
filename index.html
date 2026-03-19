@@ -2727,29 +2727,57 @@
         const contactForm = document.getElementById('contact-form');
         const submitBtn = document.getElementById('submit-btn');
 
+        // ⚠️ ضع هنا معلومات بوت Telegram الخاص بك ⚠️
+        const TELEGRAM_BOT_TOKEN = '6433956628:AAFUC80vxRm_bAQxy18wAIYD_rM_RFd6y2Y'; // مثال: '1234567890:ABCdefGHIjklmNOPqrstUVwxyz'
+        const TELEGRAM_CHAT_ID = '1913382771'; // مثال: '123456789'
+
         if (contactForm && submitBtn) {
-            contactForm.addEventListener('submit', function (event) {
+            contactForm.addEventListener('submit', async function (event) {
                 event.preventDefault();
+
+                // بيانات النموذج
+                const name = event.target.elements.name.value;
+                const email = event.target.elements.email.value;
+                const subject = event.target.elements.subject.value;
+                const message = event.target.elements.message.value;
+
+                // تنسيق الرسالة
+                const telegramMessage = `
+🔰 *رسالة جديدة من موقعك* 🔰
+
+👤 *الاسم:* ${name}
+📧 *البريد:* ${email}
+📝 *الموضوع:* ${subject}
+
+💬 *الرسالة:*
+${message}
+
+⏰ *التاريخ:* ${new Date().toLocaleString('ar-EG')}
+                `;
 
                 // Initial button state
                 const originalBtnText = submitBtn.innerHTML;
                 submitBtn.disabled = true;
                 submitBtn.innerHTML = 'جاري الإرسال... <span class="spinner"></span>';
 
-                emailjs.send(
-                    'service_q79e4ev',
-                    'template_1w05vnb',
-                    {
-                        name: event.target.elements.name.value,
-                        from_name: event.target.elements.name.value,
-                        email: event.target.elements.email.value,
-                        reply_to: event.target.elements.email.value,
-                        subject: event.target.elements.subject.value,
-                        message: event.target.elements.message.value
-                    },
-                    'VpLGOSsSIQN26ucqH'
-                )
-                    .then(() => {
+                try {
+                    // إرسال إلى تيليجرام
+                    const response = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            chat_id: TELEGRAM_CHAT_ID,
+                            text: telegramMessage,
+                            parse_mode: 'Markdown'
+                        })
+                    });
+
+                    const data = await response.json();
+
+                    if (data.ok) {
+                        // نجاح الإرسال
                         submitBtn.innerHTML = 'تم الإرسال بنجاح! ✅';
                         submitBtn.style.background = 'var(--green)';
                         contactForm.reset();
@@ -2758,16 +2786,20 @@
                             submitBtn.innerHTML = originalBtnText;
                             submitBtn.style.background = '';
                         }, 5000);
-                    }, (error) => {
-                        console.error('EmailJS FAILED...', error);
-                        submitBtn.innerHTML = 'خطأ! ❌';
-                        submitBtn.style.background = 'var(--red)';
-                        setTimeout(() => {
-                            submitBtn.disabled = false;
-                            submitBtn.innerHTML = originalBtnText;
-                            submitBtn.style.background = '';
-                        }, 5000);
-                    });
+                    } else {
+                        // فشل الإرسال
+                        throw new Error('فشل الإرسال');
+                    }
+                } catch (error) {
+                    console.error('Telegram Error:', error);
+                    submitBtn.innerHTML = 'خطأ في الإرسال! ❌';
+                    submitBtn.style.background = 'var(--red)';
+                    setTimeout(() => {
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = originalBtnText;
+                        submitBtn.style.background = '';
+                    }, 5000);
+                }
             });
         }
         
